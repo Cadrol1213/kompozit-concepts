@@ -12,7 +12,6 @@
      data-count="7900"          — счётчик; data-count-prefix / data-count-suffix
      data-marquee               — бегущая строка (скорость реагирует на прокрутку)
      data-magnetic              — магнитная кнопка (только мышь)
-     data-hover-img             — список: строки с data-img показывают фото у курсора
      data-scrub-text            — слова «проявляются» по мере прокрутки
      data-hscroll + [data-hscroll-track] — горизонтальная лента, закреплённая при прокрутке (≥ 900px)
      data-stack                 — карточки наслаиваются (дети .stack-card, CSS sticky)
@@ -207,6 +206,15 @@
           scrollTrigger: { trigger: cards[k + 1], start: 'top bottom', end: 'top ' + (parseInt(getComputedStyle(cards[k + 1]).top) || 100) + 'px', scrub: true } });
       });
     });
+    // до/после: короткий намёк ползунком, страницу не задерживаем
+    $$('[data-ba-hint]').forEach(function (sec) {
+      var o = { p: 50 };
+      function upd() { var cur = sec.querySelector('.ba'); if (!cur) return; cur.style.setProperty('--pos', o.p + '%'); var r = cur.querySelector('.ba-range'); if (r) r.value = o.p; }
+      ScrollTrigger.create({ trigger: sec, start: 'top 65%', onEnter: function () {
+        if (sec._hinted) return; sec._hinted = 1;
+        gsap.timeline().to(o, { p: 78, duration: 0.7, ease: 'power2.inOut', onUpdate: upd }).to(o, { p: 24, duration: 1, ease: 'power2.inOut', onUpdate: upd }).to(o, { p: 50, duration: 0.7, ease: 'power2.inOut', onUpdate: upd });
+      } });
+    });
     // до/после прокруткой
     $$('[data-ba-pin]').forEach(function (sec) {
       var ba = sec.querySelector('.ba'); if (!ba) return;
@@ -222,16 +230,6 @@
         var xT = gsap.quickTo(b, 'x', { duration: 0.6, ease: 'elastic.out(1,0.4)' }), yT = gsap.quickTo(b, 'y', { duration: 0.6, ease: 'elastic.out(1,0.4)' });
         b.addEventListener('mousemove', function (e) { var r = b.getBoundingClientRect(); xT((e.clientX - r.left - r.width / 2) * 0.3); yT((e.clientY - r.top - r.height / 2) * 0.4); });
         b.addEventListener('mouseleave', function () { xT(0); yT(0); });
-      });
-      $$('[data-hover-img]').forEach(function (list) {
-        var fl = document.createElement('div'); fl.className = 'hv-float'; fl.innerHTML = '<img alt="">'; document.body.appendChild(fl);
-        var im = fl.querySelector('img');
-        var xT = gsap.quickTo(fl, 'left', { duration: 0.5, ease: 'power3' }), yT = gsap.quickTo(fl, 'top', { duration: 0.5, ease: 'power3' });
-        list.addEventListener('mousemove', function (e) { xT(e.clientX + 24); yT(e.clientY); });
-        $$('[data-img]', list).forEach(function (row) {
-          row.addEventListener('mouseenter', function () { im.src = row.dataset.img; gsap.to(fl, { autoAlpha: 1, scale: 1, duration: 0.4, overwrite: 'auto' }); });
-          row.addEventListener('mouseleave', function () { gsap.to(fl, { autoAlpha: 0, scale: 0.85, duration: 0.3, overwrite: 'auto' }); });
-        });
       });
     });
 

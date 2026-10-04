@@ -116,11 +116,20 @@ a{color:inherit}
 .lf-input{border-radius:16px;background:#fff}
 .ld-title{font:700 26px/1.2 var(--serif)}
 
-/* faces marquee */
+/* faces carousel */
 .faces{padding:clamp(80px,10vw,150px) 0 clamp(60px,7vw,100px)}
-.fm{margin-top:44px;display:grid;gap:18px}
-.fm .mq-track{gap:18px}
-.fm .vd-card{width:clamp(240px,24vw,340px);flex:none}
+.fm-vp{margin-top:44px;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;--in:max(var(--gut),calc((100% - 1300px)/2 + var(--gut)));scroll-padding-left:var(--in)}
+.fm-vp::-webkit-scrollbar{display:none}
+.fm-track{display:flex;align-items:flex-start;gap:18px;width:max-content;padding:4px var(--in) 6px}
+.fm-track .vd-card{width:clamp(250px,24vw,330px);flex:none;scroll-snap-align:start}
+.fm-ctl{display:flex;align-items:center;gap:18px;margin-top:26px}
+.fm-n{font:700 17px/1 var(--sans);color:var(--mute);min-width:62px}
+.fm-n b{color:var(--ink)}
+.fm-bar{flex:1;height:3px;border-radius:3px;background:var(--line);overflow:hidden}
+.fm-bar i{display:block;height:100%;background:var(--red);transform-origin:0 50%;transform:scaleX(.04);transition:transform .2s}
+.fm-ar{width:54px;height:54px;flex:none;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font:600 20px var(--sans);cursor:pointer;transition:background .25s,border-color .25s,color .25s}
+.fm-ar:hover:not(:disabled){background:var(--red);border-color:var(--red);color:#fff}
+.fm-ar:disabled{opacity:.35;cursor:default}
 .vd-thumb{border-radius:24px}
 .vd-play{background:#fff;width:62px;height:62px;margin:-31px 0 0 -31px}
 .vd-play::after{left:25px;top:20px;border-left-color:var(--red)}
@@ -307,11 +316,12 @@ a{color:inherit}
 
   <section class="faces" id="faces">
     <div class="wrap center"><span class="ov" data-fade>Видеоотзывы</span><h2 class="h2" data-split>Наши клиенты <em>рассказывают сами</em></h2></div>
-    <div class="fm">
-      <div data-marquee data-duration="70"><div class="mq-track" id="fm1"></div></div>
-      <div data-marquee="right" data-duration="80"><div class="mq-track" id="fm2"></div></div>
+    <div class="fm-vp" id="fm-vp" data-carousel><div class="fm-track" id="fm"></div></div>
+    <div class="wrap fm-ctl">
+      <span class="fm-n"><b id="fm-n">01</b> / 12</span><span class="fm-bar"><i id="fm-p"></i></span>
+      <button type="button" class="fm-ar" id="fm-prev" aria-label="Предыдущее видео">←</button><button type="button" class="fm-ar" id="fm-next" aria-label="Следующее видео">→</button>
     </div>
-    <p class="fm-note">12 видео — квартиры, ванные и даже трёхэтажный таунхаус. Нажмите, чтобы посмотреть.</p>
+    <p class="fm-note wrap">12 видео — квартиры, ванные и даже трёхэтажный таунхаус. Листайте и нажмите, чтобы посмотреть.</p>
   </section>
 
   <section class="sec" id="works" style="padding-top:0">
@@ -398,8 +408,8 @@ a{color:inherit}
   $('#tabs').addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (!b || b.getAttribute('aria-selected') === 'true') return; $$('.tab').forEach(function (x) { x.setAttribute('aria-selected', x === b); }); drawSit(+b.dataset.k, true); });
   KZ.quiz($('#quiz-box'), { live: '#live' });
   // лица клиентов — две ленты
-  KZ.render($('#fm1'), D.videos.slice(0, 6), KZ.videoTpl);
-  KZ.render($('#fm2'), D.videos.slice(6), KZ.videoTpl);
+  KZ.render($('#fm'), D.videos, KZ.videoTpl);
+  KZ.carousel($('#fm-vp'), { prev: $('#fm-prev'), next: $('#fm-next'), count: $('#fm-n'), progress: $('#fm-p') });
   // мозаика объектов
   KZ.render($('#mas'), D.objects, function (o) {
     return '<article class="mc" data-fade><button type="button" data-gallery="' + o.id + '" aria-label="Фото: ' + esc(o.title) + '"><img src="' + KZ.img(o.imgs[0], true) + '" alt="' + esc(o.title) + '" loading="lazy"></button>' +

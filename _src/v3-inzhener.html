@@ -90,25 +90,29 @@ a{color:inherit}
 
 /* layers story */
 .layers{background:var(--ink);color:var(--paper)}
-.ly-pin{height:100vh;display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:center;padding:84px var(--gut) 40px;max-width:1440px;margin:0 auto}
+.ly-pin{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(24px,4vw,64px);align-items:start;padding:clamp(80px,9vw,130px) var(--gut);max-width:1440px;margin:0 auto}
 .ly-left .tag{color:rgba(236,234,228,.55)}
-.ly-left .h2{color:var(--paper);margin:16px 0 30px}
-.ly-steps{position:relative;min-height:260px}
-.ly-step{position:absolute;inset:0;opacity:0;visibility:hidden}
-.ly-step:first-child{opacity:1;visibility:visible}
+.ly-left .h2{color:var(--paper);margin:16px 0 10px}
+.ly-steps{display:grid}
+.ly-step{min-height:min(52vh,480px);display:flex;flex-direction:column;justify-content:center;padding:36px 0;border-bottom:1px solid rgba(236,234,228,.14);transition:opacity .45s}
+.ly-step:first-child{min-height:0;padding-top:28px}
+.ly-step:last-child{border-bottom:0}
+.m-anim .ly-step:not(.on){opacity:.38}
 .ly-step .no{font:700 13px var(--mono);color:var(--red)}
 .ly-step h3{font:800 clamp(28px,2.8vw,44px)/1.05 var(--head);letter-spacing:-.03em;margin:10px 0 12px;text-transform:uppercase}
 .ly-step p{margin:0 0 16px;color:rgba(236,234,228,.7);max-width:460px}
 .ly-step ul{list-style:none;padding:0;margin:0;display:grid;gap:6px;font:500 13px/1.4 var(--mono)}
 .ly-step li{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed rgba(236,234,228,.2);padding:6px 0;max-width:460px}
 .ly-step li b{color:#fff;white-space:nowrap}
-.ly-prog{display:flex;gap:6px;margin-top:26px}
-.ly-prog i{flex:1;height:3px;background:rgba(236,234,228,.18);max-width:70px}
+.ly-right{position:sticky;top:calc(50vh - min(36vh,350px));height:min(72vh,700px);border:1.5px solid rgba(236,234,228,.3)}
+.ly-prog{position:absolute;left:14px;right:14px;top:14px;z-index:2;display:flex;gap:6px}
+.ly-prog i{flex:1;height:3px;background:rgba(236,234,228,.35)}
 .ly-prog i.on{background:var(--red)}
-.ly-right{position:relative;height:min(76vh,740px);border:1.5px solid rgba(236,234,228,.3)}
-.ly-img{position:absolute;inset:0;opacity:0;overflow:hidden}
-.ly-img:first-child{opacity:1}
-.ly-img img{width:100%;height:100%;object-fit:cover}
+.ly-img{position:absolute;inset:0;opacity:0;overflow:hidden;transition:opacity .55s}
+.ly-img.on{opacity:1}
+.ly-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.08);transition:transform 1.4s cubic-bezier(.2,.7,.2,1)}
+.ly-img.on img{transform:none}
+.m-static .ly-img img{transform:none;transition:none}
 .ly-img span{position:absolute;left:0;bottom:0;background:var(--red);color:#fff;font:500 12px/1 var(--mono);text-transform:uppercase;padding:9px 12px}
 .ly-mob{display:none}
 
@@ -354,7 +358,7 @@ a{color:inherit}
         <h1 data-split="lines">Ремонт квартир под&nbsp;ключ <span class="r">в&nbsp;Санкт-Петербурге</span></h1>
         <div class="dim" data-fade aria-hidden="true">
           <svg data-draw viewBox="0 0 640 44" preserveAspectRatio="none"><path d="M2 22 H638" stroke="#111110" stroke-width="1.5" fill="none"/><path d="M14 12 L2 22 L14 32 M626 12 L638 22 L626 32" stroke="#111110" stroke-width="1.5" fill="none"/><path d="M2 4 V40 M638 4 V40" stroke="#111110" stroke-width="1" fill="none"/></svg>
-          <span>3 400 — 10 800 ₽/м² · работы</span>
+          <span>от 3 400 ₽/м² · работы</span>
         </div>
         <p class="lead" data-fade>Капитальный ремонт с заменой электрики и сантехники, перепланировкой и отделкой. Смета фиксирована до конца работ, каждый этап вы принимаете и оплачиваете отдельно.</p>
         <div class="hero-cta" data-fade>
@@ -362,16 +366,16 @@ a{color:inherit}
           <a class="btn btn-o" href="#calc">Прайс-калькулятор</a>
         </div>
         <div class="specs" data-fade>
-          <div><small>Косметический</small><b><span data-count="3400">3 400</span><i>₽/м²</i></b></div>
-          <div><small>Капитальный</small><b><span data-count="7900">7 900</span><i>₽/м²</i></b></div>
-          <div><small>Дизайнерский</small><b><span data-count="10800">10 800</span><i>₽/м²</i></b></div>
+          <div><small>Косметический</small><b><span data-count="3400" data-count-prefix="от ">от 3 400</span><i>₽/м²</i></b></div>
+          <div><small>Капитальный</small><b><span data-count="7900" data-count-prefix="от ">от 7 900</span><i>₽/м²</i></b></div>
+          <div><small>Дизайнерский</small><b><span data-count="10800" data-count-prefix="от ">от 10 800</span><i>₽/м²</i></b></div>
         </div>
       </div>
       <div class="photo" data-reveal-img>
         <img src="img/en-cable-ceiling.jpg" alt="Черновая электрика: кабели в гофре по потолку и распаечная коробка" fetchpriority="high">
-        <div class="hs" style="left:30%;top:25%"><div class="dot"></div><svg width="110" height="50" style="left:0;top:0" data-draw><path d="M0 0 L40 -40 H110" stroke="#111110" stroke-width="1.5" fill="none"/></svg><div class="lbl" style="left:112px;top:-60px"><b>Кабель в гофре по потолку</b>70 ₽/м.п.</div></div>
+        <div class="hs" style="left:30%;top:25%"><div class="dot"></div><svg width="110" height="50" style="left:0;top:0" data-draw><path d="M0 0 L40 -40 H110" stroke="#111110" stroke-width="1.5" fill="none"/></svg><div class="lbl" style="left:112px;top:-60px"><b>Кабель в гофре по потолку</b>от 70 ₽/м.п.</div></div>
         <div class="hs" style="left:51%;top:40%"><div class="dot"></div><svg width="110" height="50" style="left:0;top:0" data-draw><path d="M0 0 L40 40 H110" stroke="#111110" stroke-width="1.5" fill="none"/></svg><div class="lbl" style="left:112px;top:22px"><b>Слаботочные сети</b>интернет, ТВ</div></div>
-        <div class="hs r" style="left:79%;top:70%"><div class="dot"></div><svg width="110" height="50" style="right:0;top:0" data-draw><path d="M0 0 L-40 -40 H-110" stroke="#111110" stroke-width="1.5" fill="none"/></svg><div class="lbl" style="right:112px;top:-60px"><b>Распайка коробки</b>450 ₽/шт.</div></div>
+        <div class="hs r" style="left:79%;top:70%"><div class="dot"></div><svg width="110" height="50" style="right:0;top:0" data-draw><path d="M0 0 L-40 -40 H-110" stroke="#111110" stroke-width="1.5" fill="none"/></svg><div class="lbl" style="right:112px;top:-60px"><b>Распайка коробки</b>от 450 ₽/шт.</div></div>
         <span class="cap">Черновая электрика · фото с объекта</span>
       </div>
     </div>
@@ -383,9 +387,8 @@ a{color:inherit}
         <div class="tag"><b>[02]</b> Слои ремонта</div>
         <h2 class="h2">Что внутри <i>стен</i></h2>
         <div class="ly-steps" id="ly-steps"></div>
-        <div class="ly-prog" id="ly-prog"></div>
       </div>
-      <div class="ly-right" id="ly-imgs"></div>
+      <div class="ly-right"><div class="ly-prog" id="ly-prog"></div><div id="ly-imgs"></div></div>
     </div>
     <div class="ly-mob" id="ly-mob"></div>
   </section>
@@ -405,7 +408,7 @@ a{color:inherit}
       <div class="tag" data-fade><b>[04]</b> Журнал объектов</div>
       <h2 class="h2" data-split style="margin-top:16px">Объекты <i>по&nbsp;районам</i></h2>
       <div class="filters" id="pf-filters"></div>
-      <div class="jr" id="pf" data-hover-img></div>
+      <div class="jr" id="pf"></div>
     </div>
   </section>
 
@@ -445,8 +448,8 @@ a{color:inherit}
 
   <section class="vds" id="reviews">
     <div class="wrap">
-      <div class="tag" data-fade><b>[08]</b> Видеоотзывы</div>
-      <h2 class="h2" data-split style="margin-top:16px">12 клиентов — <i>на&nbsp;камеру</i></h2>
+      <div class="tag" data-fade><b>[08]</b> Отзывы клиентов</div>
+      <h2 class="h2" data-split style="margin-top:16px">Видеоотзывы</h2>
       <div class="vd-grid" id="videos" data-stagger></div>
     </div>
   </section>
@@ -490,11 +493,11 @@ a{color:inherit}
   var D = KZ.data, $ = KZ.$, $$ = KZ.$$, esc = KZ.esc;
   // слои ремонта (фото с объектов, цены — из прайса 2026)
   var L = [
-    { t: 'Демонтаж', img: 'fo-before', cap: 'Студия на Фонтанке · в процессе', d: 'Полный или частичный демонтаж стен, перегородок и старых покрытий, вывоз мусора.', p: [['Демонтаж плитки со стен', '140 ₽/м²'], ['Демонтаж старой штукатурки', '130 ₽/м²'], ['Вывоз мусора, газель 1,5 т', '4 500 ₽']] },
-    { t: 'Электрика', img: 'en-cable-wall', cap: 'Черновая электрика · фото с объекта', d: 'Штробление, прокладка кабеля в гофре, распайка коробок, сборка электрощита.', p: [['Штробление стен под кабель', '300 ₽/м.п.'], ['Кабель в штробе в гофре', '60 ₽/м.п.'], ['Электрощит в готовую нишу', 'от 1 700 ₽']] },
-    { t: 'Сантехника', img: 'en-node', cap: 'Сантехнический узел · фото с объекта', d: 'Коллекторная разводка ХВС и ГВС, канализация, инсталляции, замена стояков.', p: [['Разводка ХВС, ГВС', '1 400 ₽/точка'], ['Разводка канализации', '500 ₽/точка'], ['Замена стояка ХВС/ГВС', '2 900 ₽']] },
-    { t: 'Гидроизоляция', img: 'fo-shower-before', cap: 'Душевая на Фонтанке · в процессе', d: 'Обмазочная гидроизоляция в два слоя, проклейка углов и стыков перед плиткой.', p: [['Грунтовка гидроизоляционным праймером', '50 ₽/м²'], ['Гидроизоляция мастикой в 2 слоя', '360 ₽/м²'], ['Проклейка углов лентой', '150 ₽/м.п.']] },
-    { t: 'Чистовая отделка', img: 'fo-shower-after', cap: 'Та же душевая · готово', d: 'Плитка и мозаика, затирка, чистовая сантехника и электрика.', p: [['Укладка плитки на стены', 'от 800 ₽/м²'], ['Укладка мозаики', 'от 1 700 ₽/м²'], ['Затирка швов плитки', '100 ₽/м²']] }
+    { t: 'Демонтаж', img: 'fo-before', cap: 'Студия на Фонтанке · в процессе', d: 'Полный или частичный демонтаж стен, перегородок и старых покрытий, вывоз мусора.', p: [['Демонтаж плитки со стен', 'от 140 ₽/м²'], ['Демонтаж старой штукатурки', 'от 130 ₽/м²'], ['Вывоз мусора, газель 1,5 т', 'от 4 500 ₽']] },
+    { t: 'Электрика', img: 'en-cable-wall', cap: 'Черновая электрика · фото с объекта', d: 'Штробление, прокладка кабеля в гофре, распайка коробок, сборка электрощита.', p: [['Штробление стен под кабель', 'от 300 ₽/м.п.'], ['Кабель в штробе в гофре', 'от 60 ₽/м.п.'], ['Электрощит в готовую нишу', 'от 1 700 ₽']] },
+    { t: 'Сантехника', img: 'en-node', cap: 'Сантехнический узел · фото с объекта', d: 'Коллекторная разводка ХВС и ГВС, канализация, инсталляции, замена стояков.', p: [['Разводка ХВС, ГВС', 'от 1 400 ₽/точка'], ['Разводка канализации', 'от 500 ₽/точка'], ['Замена стояка ХВС/ГВС', 'от 2 900 ₽']] },
+    { t: 'Гидроизоляция', img: 'fo-shower-before', cap: 'Душевая на Фонтанке · в процессе', d: 'Обмазочная гидроизоляция в два слоя, проклейка углов и стыков перед плиткой.', p: [['Грунтовка гидроизоляционным праймером', 'от 50 ₽/м²'], ['Гидроизоляция мастикой в 2 слоя', 'от 360 ₽/м²'], ['Проклейка углов лентой', 'от 150 ₽/м.п.']] },
+    { t: 'Чистовая отделка', img: 'fo-shower-after', cap: 'Та же душевая · готово', d: 'Плитка и мозаика, затирка, чистовая сантехника и электрика.', p: [['Укладка плитки на стены', 'от 800 ₽/м²'], ['Укладка мозаики', 'от 1 700 ₽/м²'], ['Затирка швов плитки', 'от 100 ₽/м²']] }
   ];
   var liHtml = function (p) { return p.map(function (x) { return '<li><span>' + esc(x[0]) + '</span><b>' + esc(x[1]) + '</b></li>'; }).join(''); };
   KZ.render($('#ly-steps'), L, function (s, k) { return '<div class="ly-step"><div class="no">СЛОЙ 0' + (k + 1) + ' / 05</div><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p><ul>' + liHtml(s.p) + '</ul></div>'; });
@@ -502,30 +505,25 @@ a{color:inherit}
   $('#ly-prog').innerHTML = L.map(function (s, k) { return '<i' + (k === 0 ? ' class="on"' : '') + '></i>'; }).join('');
   $('#ly-mob').innerHTML = '<div><div class="tag"><b>[02]</b> Слои ремонта</div><h2 class="h2" style="margin-top:14px">Что внутри <i style="font-style:normal;color:var(--red)">стен</i></h2></div>' +
     L.map(function (s, k) { return '<article><img src="' + KZ.img(s.img, true) + '" alt="' + esc(s.cap) + '" loading="lazy"><span class="no">СЛОЙ 0' + (k + 1) + '</span><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></article>'; }).join('');
-  document.addEventListener('intro:done', function () {
-    if (!window.gsap || (window.M && M.reduce)) return;
-    var mm = gsap.matchMedia();
-    mm.add('(min-width: 901px)', function () {
-      var steps = $$('#ly-steps .ly-step'), imgs = $$('#ly-imgs .ly-img'), bars = $$('#ly-prog i');
-      gsap.set(steps, { autoAlpha: 0, y: 30 }); gsap.set(steps[0], { autoAlpha: 1, y: 0 });
-      gsap.set(imgs, { autoAlpha: 0 }); gsap.set(imgs[0], { autoAlpha: 1 });
-      var tl = gsap.timeline({ scrollTrigger: { trigger: '#ly-pin', start: 'top top', end: '+=' + (L.length * 70) + '%', pin: true, scrub: 0.6, anticipatePin: 1,
-        onUpdate: function (self) { var n = Math.min(L.length - 1, Math.floor(self.progress * L.length)); bars.forEach(function (b, k) { b.classList.toggle('on', k <= n); }); } } });
-      for (var k = 1; k < L.length; k++) {
-        tl.to(steps[k - 1], { autoAlpha: 0, y: -30, duration: 0.4 }, k)
-          .fromTo(steps[k], { autoAlpha: 0, y: 30 }, { autoAlpha: 1, y: 0, duration: 0.4 }, k + 0.15)
-          .fromTo(imgs[k], { autoAlpha: 0, clipPath: 'inset(100% 0 0 0)' }, { autoAlpha: 1, clipPath: 'inset(0% 0 0 0)', duration: 0.6, ease: 'power2.inOut' }, k)
-          .fromTo(imgs[k].querySelector('img'), { scale: 1.2 }, { scale: 1, duration: 0.8 }, k)
-          .to(imgs[k - 1], { autoAlpha: 0, duration: 0.05 }, k + 0.6);
-      }
-      tl.to({}, { duration: 0.6 });
-    });
-  });
+  (function () {
+    var steps = $$('#ly-steps .ly-step'), imgs = $$('#ly-imgs .ly-img'), bars = $$('#ly-prog i');
+    function act(n) {
+      steps.forEach(function (x, k) { x.classList.toggle('on', k === n); });
+      imgs.forEach(function (x, k) { x.classList.toggle('on', k === n); });
+      bars.forEach(function (x, k) { x.classList.toggle('on', k <= n); });
+    }
+    act(0);
+    if (!('IntersectionObserver' in window)) return;
+    var io = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) act(steps.indexOf(e.target)); });
+    }, { rootMargin: '-48% 0px -48% 0px' });
+    steps.forEach(function (x) { io.observe(x); });
+  })();
   KZ.priceCalc($('#price-calc'));
   KZ.portfolio($('#pf'), {
     filterEl: '#pf-filters', filterBy: 'district',
     template: function (o, k) {
-      return '<div class="jr-row" role="button" tabindex="0" data-type="' + o.type + '" data-district="' + esc(o.district) + '" data-gallery="' + o.id + '" data-img="' + KZ.img(o.imgs[0], true) + '">' +
+      return '<div class="jr-row" role="button" tabindex="0" data-type="' + o.type + '" data-district="' + esc(o.district) + '" data-gallery="' + o.id + '">' +
         '<span class="no">' + String(k + 1).padStart(2, '0') + '</span><h3>' + esc(o.title) + '</h3>' +
         '<div><span class="k">Адрес</span><span class="v">' + esc(o.place) + '</span></div><div><span class="k">Район</span><span class="v">' + esc(o.district) + '</span></div>' +
         '<div><span class="k">Дом</span><span class="v">' + esc(o.house) + '</span></div><span class="go">Фото · ' + o.imgs.length + '</span></div>';

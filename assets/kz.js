@@ -111,7 +111,7 @@
     ':where(.qz-restart){margin-top:12px;text-decoration:underline}',
     /* FAQ и видео — минимум */
     '.faq-q{list-style:none;cursor:pointer}.faq-q::-webkit-details-marker{display:none}',
-    ':where(.vd-card){font:inherit;color:inherit;background:none;border:0;padding:0;text-align:left;cursor:pointer}',
+    ':where(.vd-card){align-self:start;font:inherit;color:inherit;background:none;border:0;padding:0;text-align:left;cursor:pointer}',
     ':where(.vd-thumb){position:relative;display:block;overflow:hidden;aspect-ratio:16/9;border-radius:calc(var(--kz-radius,16px) * .75);background:#111}',
     ':where(.vd-thumb img){width:100%;height:100%;object-fit:cover;display:block;transition:transform .4s}',
     '.vd-card:hover .vd-thumb img{transform:scale(1.04)}',
@@ -121,6 +121,9 @@
     ':where(.pf-media img){display:block;width:100%;height:100%;object-fit:cover;transition:transform .5s}',
     '.pf-media:hover img{transform:scale(1.04)}',
     ':where(.pf-count){position:absolute;right:10px;bottom:10px;background:rgba(0,0,0,.74);color:#fff;font:600 12px/1 system-ui;padding:6px 9px;border-radius:999px}',
+    '[data-carousel]{cursor:grab}',
+    '.is-drag{scroll-snap-type:none!important;scroll-behavior:auto!important;cursor:grabbing!important;user-select:none}',
+    '.is-drag *{pointer-events:none}',
     '[hidden]{display:none!important}'
   ].join('\n');
   var st = document.createElement('style'); st.id = 'kz-base'; st.textContent = baseCss;
@@ -292,7 +295,7 @@
     function updateLive() {
       if (!live) return;
       var e = KZ.estimate(ans);
-      var t = e.kind === 'bath' ? 'по прайсу' : e.kind === 'range' ? money(e.min) + ' – ' + money(e.max) : 'от ' + money(e.sum);
+      var t = e.kind === 'bath' ? 'по прайсу' : e.kind === 'range' ? 'от ' + money(e.min) : 'от ' + money(e.sum);
       live.textContent = t;
       var lr = document.querySelector('[data-qz-live-area]'); if (lr) lr.textContent = ans.area + ' м²';
     }
@@ -347,10 +350,10 @@
       var sumHtml, note;
       if (e.kind === 'bath') {
         sumHtml = '<div class="qz-sum qz-sum-sm">Считаем по прайсу после замера</div>';
-        note = 'Ремонт санузла зависит от объёма плитки и сантехники. Например: укладка плитки на стены — от 800 ₽/м², гидроизоляция — 360 ₽/м², монтаж инсталляции — 2 900 ₽. Цены за работы, без материалов.';
+        note = 'Ремонт санузла зависит от объёма плитки и сантехники. Например: укладка плитки на стены — от 800 ₽/м², гидроизоляция — от 360 ₽/м², монтаж инсталляции — от 2 900 ₽. Цены за работы, без материалов.';
       } else if (e.kind === 'range') {
-        sumHtml = '<div class="qz-sum">' + money(e.min) + ' – ' + money(e.max) + '</div>';
-        note = 'Диапазон от косметического (3 400 ₽/м²) до дизайнерского ремонта (10 800 ₽/м²) на ' + ans.area + ' м². Подскажем, какой вариант нужен именно вам.';
+        sumHtml = '<div class="qz-sum">от ' + money(e.min) + '</div>';
+        note = 'Это косметический ремонт (от 3 400 ₽/м²) на ' + ans.area + ' м². Капитальный — от 7 900 ₽/м², дизайнерский — от 10 800 ₽/м². Подскажем, какой вариант нужен именно вам.';
       } else {
         sumHtml = '<div class="qz-sum">от ' + money(e.sum) + '</div>';
         note = label('kind', ans.kind) + ' ремонт · ' + ans.area + ' м² × ' + money(e.rate).replace(' ₽', '') + ' ₽/м². Стоимость работ без материалов.';
@@ -448,17 +451,17 @@
     el.classList.add('pc');
     el.innerHTML = '<div class="pc-tabs" role="tablist">' + groups.map(function (g, k) { return '<button type="button" role="tab" class="pc-tab" aria-selected="' + (k === 0) + '" data-g="' + esc(g) + '">' + esc(g) + '</button>'; }).join('') + '</div>' +
       '<div class="pc-rows">' + items.map(function (x, k) {
-        return '<div class="pc-row" data-g="' + esc(x.g) + '"' + (x.g !== groups[0] ? ' hidden' : '') + '><div class="pc-name">' + esc(x.n) + '<span class="pc-price">' + (x.from ? 'от ' : '') + money(x.p) + ' / ' + x.u + '</span></div>' +
+        return '<div class="pc-row" data-g="' + esc(x.g) + '"' + (x.g !== groups[0] ? ' hidden' : '') + '><div class="pc-name">' + esc(x.n) + '<span class="pc-price">от ' + money(x.p) + ' / ' + x.u + '</span></div>' +
           '<div class="pc-qty"><button type="button" class="pc-dec" aria-label="Меньше">−</button><input type="number" min="0" step="1" inputmode="numeric" value="0" data-k="' + k + '" aria-label="Количество: ' + esc(x.n) + ', ' + x.u + '"><span class="pc-unit">' + x.u + '</span><button type="button" class="pc-inc" aria-label="Больше">+</button></div>' +
           '<div class="pc-sum" data-sum="' + k + '">—</div></div>';
       }).join('') + '</div>' +
-      '<div class="pc-total"><div><div class="pc-total-label">Итого за выбранные работы</div><div class="pc-total-val">0 ₽</div><div class="pc-total-note">Цены из прайс-листа 2026 года, работы без материалов. Позиции «от» — по минимальной цене.</div></div>' +
+      '<div class="pc-total"><div><div class="pc-total-label">Итого за выбранные работы</div><div class="pc-total-val">0 ₽</div><div class="pc-total-note">Цены из прайс-листа 2026 года, работы без материалов. Точную сумму назовём после замера.</div></div>' +
       '<button type="button" class="pc-send" disabled>Отправить расчёт</button></div>';
     var totalEl = $('.pc-total-val', el), send = $('.pc-send', el);
     function upd() {
       var t = 0;
-      items.forEach(function (x, k) { var s = qty[k] * x.p; t += s; $('[data-sum="' + k + '"]', el).textContent = qty[k] ? money(s) : '—'; });
-      totalEl.textContent = money(t); send.disabled = t === 0;
+      items.forEach(function (x, k) { var s = qty[k] * x.p; t += s; $('[data-sum="' + k + '"]', el).textContent = qty[k] ? 'от ' + money(s) : '—'; });
+      totalEl.textContent = t ? 'от ' + money(t) : '0 ₽'; send.disabled = t === 0;
     }
     el.addEventListener('input', function (e) {
       if (e.target.matches('input[type=number]')) { var k = +e.target.dataset.k; qty[k] = Math.max(0, Math.floor(+e.target.value || 0)); upd(); }
@@ -480,6 +483,57 @@
       var lines = items.map(function (x, k) { return qty[k] ? x.n + ' — ' + qty[k] + ' ' + x.u : null; }).filter(Boolean);
       KZ.openLead('Отправить расчёт', 'Итого ' + totalEl.textContent + ' за работы. Руководитель проекта проверит расчёт и предложит бесплатный выезд для точной сметы.', lines.join('; '));
     });
+  };
+
+  /* ---------- подгонка крупной надписи под ширину: [data-fit] ---------- */
+  KZ.fit = function () {
+    $$('[data-fit]').forEach(function (el) {
+      var span = el.querySelector('.fit-in');
+      if (!span) { span = document.createElement('span'); span.className = 'fit-in'; span.style.display = 'inline-block'; span.style.whiteSpace = 'nowrap'; while (el.firstChild) span.appendChild(el.firstChild); el.appendChild(span); }
+      var cs = getComputedStyle(el), cw = el.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
+      el.style.fontSize = '100px';
+      var w = span.getBoundingClientRect().width;
+      if (!w || !cw) return;
+      el.style.fontSize = (100 * cw * (+el.dataset.fit || 0.97) / w).toFixed(2) + 'px';
+    });
+  };
+
+  /* ---------- карусель: стрелки, свайп, перетаскивание мышью; вертикальную прокрутку не трогает ---------- */
+  KZ.carousel = function (vp, o) {
+    if (!vp) return;
+    o = o || {};
+    var list = function () { return vp.firstElementChild ? vp.firstElementChild.children : vp.children; };
+    var step = function () {
+      var it = list()[0]; if (!it) return vp.clientWidth * 0.8;
+      var ps = getComputedStyle(it.parentElement), g = parseFloat(ps.columnGap) || parseFloat(ps.gap) || 0;
+      return it.getBoundingClientRect().width + g;
+    };
+    var go = function (d) { vp.scrollBy({ left: d * step(), behavior: 'smooth' }); };
+    if (o.prev) o.prev.addEventListener('click', function () { go(-1); });
+    if (o.next) o.next.addEventListener('click', function () { go(1); });
+    var upd = function () {
+      var max = vp.scrollWidth - vp.clientWidth, p = max > 0 ? vp.scrollLeft / max : 0;
+      if (o.progress) o.progress.style.transform = 'scaleX(' + Math.max(0.04, p) + ')';
+      if (o.count) { var n = list().length, i = Math.min(n, Math.round(vp.scrollLeft / step()) + 1); if (p > 0.98) i = n; o.count.textContent = String(i).padStart(2, '0'); }
+      if (o.prev) o.prev.disabled = vp.scrollLeft < 4;
+      if (o.next) o.next.disabled = vp.scrollLeft > max - 4;
+    };
+    vp.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd); window.addEventListener('load', upd); upd();
+    var down = false, x0 = 0, s0 = 0, moved = false;
+    vp.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse' || e.button !== 0) return; down = true; moved = false; x0 = e.clientX; s0 = vp.scrollLeft; });
+    window.addEventListener('pointermove', function (e) {
+      if (!down) return;
+      var dx = e.clientX - x0;
+      if (!moved && Math.abs(dx) > 5) { moved = true; vp.classList.add('is-drag'); }
+      if (moved) vp.scrollLeft = s0 - dx;
+    });
+    window.addEventListener('pointerup', function () {
+      if (!down) return; down = false;
+      if (moved) { vp.classList.remove('is-drag'); var st = step(); vp.scrollTo({ left: Math.round(vp.scrollLeft / st) * st, behavior: 'smooth' }); setTimeout(function () { moved = false; }, 60); }
+    });
+    vp.addEventListener('click', function (e) { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+    vp.addEventListener('dragstart', function (e) { e.preventDefault(); });
   };
 
   /* ---------- общее поведение страницы ---------- */
@@ -518,6 +572,7 @@
     // формы, год, бейдж концепта
     initForms(document);
     $$('[data-year]').forEach(function (y) { y.textContent = new Date().getFullYear(); });
+    KZ.fit(); window.addEventListener('resize', KZ.fit); window.addEventListener('load', KZ.fit); if (document.fonts && document.fonts.ready) document.fonts.ready.then(KZ.fit);
     var vr = document.body.dataset.variant;
     if (vr) {
       var b = document.createElement('a'); b.className = 'kz-badge'; b.href = 'index.html';

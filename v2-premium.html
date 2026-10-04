@@ -142,7 +142,7 @@ a{color:inherit}
 /* levels */
 .lv{padding:clamp(100px,12vw,190px) 0}
 .lv-list{margin-top:60px;border-top:1px solid var(--line)}
-.lv-row{display:grid;grid-template-columns:1.3fr 1.7fr auto;gap:40px;align-items:center;padding:42px 0;border-bottom:1px solid var(--line);cursor:default}
+.lv-row{display:grid;grid-template-columns:clamp(300px,37vw,600px) minmax(0,1fr) auto;gap:40px;align-items:center;padding:42px 0;border-bottom:1px solid var(--line);cursor:default}
 .lv-row h3{font:400 clamp(38px,4.4vw,74px)/1 var(--serif);margin:0;transition:color .4s,transform .6s cubic-bezier(.2,.7,.2,1)}
 .lv-row:hover h3{color:var(--red-l);transform:translateX(16px)}
 .lv-row p{margin:0;color:var(--mute);font-size:15px;max-width:62ch}
@@ -152,7 +152,7 @@ a{color:inherit}
 .lv-price small{font:500 12px/1 var(--sans);letter-spacing:.22em;text-transform:uppercase;color:var(--mute)}
 
 /* before-after */
-.bap{position:relative;height:100vh;overflow:hidden}
+.bap{position:relative;height:min(86vh,860px);min-height:520px;overflow:hidden}
 .bap .ba{position:absolute;inset:0}
 .bap::before{content:"";position:absolute;inset:0;z-index:2;pointer-events:none;background:linear-gradient(180deg,rgba(13,12,11,.7),rgba(13,12,11,0) 40%)}
 .bap-cap{position:absolute;left:var(--gut);top:120px;z-index:3;max-width:640px}
@@ -220,7 +220,7 @@ a{color:inherit}
 .ct-links{display:flex;gap:30px;margin-top:40px;flex-wrap:wrap}
 .ct-form{background:rgba(21,20,19,.92);border:1px solid var(--line);padding:clamp(24px,3vw,44px);backdrop-filter:blur(6px)}
 .ct-form h3{font:400 32px/1.1 var(--serif);margin:0 0 22px}
-.wm{font:400 clamp(70px,16.6vw,300px)/.8 var(--serif);text-align:center;color:transparent;-webkit-text-stroke:1px rgba(238,231,220,.22);margin:clamp(70px,9vw,140px) 0 -2%;white-space:nowrap;letter-spacing:-.02em}
+.wm{display:block;overflow:hidden;padding:0 var(--gut);font:400 15vw/.8 var(--serif);text-align:center;color:transparent;-webkit-text-stroke:1px rgba(238,231,220,.22);margin:clamp(70px,9vw,140px) 0 -2%;white-space:nowrap;letter-spacing:-.02em}
 .ftr{border-top:1px solid var(--line);padding:24px 0 100px;font-size:13px;color:var(--mute)}
 .ftr .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 .ftr a{text-decoration:none}
@@ -260,7 +260,7 @@ a{color:inherit}
   .lv-row{grid-template-columns:1fr;gap:14px;padding:32px 0}
   .lv-price{text-align:left}
   .qz-side{position:static}
-  .bap{height:78vh}
+  .bap{height:72vh;min-height:440px}
   .mbar{display:grid;grid-template-columns:1fr 1fr 1.4fr;position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(13,12,11,.95);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom)}
   .mbar a{display:flex;align-items:center;justify-content:center;height:60px;text-decoration:none;font:500 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;border-right:1px solid var(--line)}
   .mbar a.mb-p{background:var(--red);border:0;color:#fff}
@@ -315,9 +315,9 @@ a{color:inherit}
       <div class="hero-bot">
         <div data-fade><p>Дизайнерский, капитальный и косметический ремонт. Ваш дизайн-проект или наш — с авторским надзором и сметой, которая не меняется до конца работ.</p></div>
         <div class="hero-rates" data-fade>
-          <div><small>Косметический</small><b><span data-count="3400">3 400</span><i>₽/м²</i></b></div>
-          <div><small>Капитальный</small><b><span data-count="7900">7 900</span><i>₽/м²</i></b></div>
-          <div><small>Дизайнерский</small><b><span data-count="10800">10 800</span><i>₽/м²</i></b></div>
+          <div><small>Косметический</small><b><span data-count="3400" data-count-prefix="от ">от 3 400</span><i>₽/м²</i></b></div>
+          <div><small>Капитальный</small><b><span data-count="7900" data-count-prefix="от ">от 7 900</span><i>₽/м²</i></b></div>
+          <div><small>Дизайнерский</small><b><span data-count="10800" data-count-prefix="от ">от 10 800</span><i>₽/м²</i></b></div>
         </div>
         <div class="hero-cta" data-fade><a class="btn" href="#quiz" data-goto-quiz data-magnetic>Рассчитать</a></div>
       </div>
@@ -341,8 +341,8 @@ a{color:inherit}
       </div>
       <div class="os-mob" id="os-mob"></div>
       <div class="more">
-        <div class="more-h"><h3 data-split>Ещё объекты</h3><span class="k">наведите — покажем фото</span></div>
-        <div class="more-list" id="more" data-hover-img></div>
+        <div class="more-h"><h3 data-split>Ещё объекты</h3><span class="k">нажмите, чтобы открыть фото</span></div>
+        <div class="more-list" id="more"></div>
       </div>
     </div>
   </section>
@@ -372,13 +372,13 @@ a{color:inherit}
       <div class="k" data-fade>Стоимость</div>
       <h2 class="h2" data-split style="margin-top:22px">Три уровня — <em>цена за метр</em></h2>
       <p class="lead" data-fade style="margin-top:22px">Цены за работы, без материалов. Черновые материалы закупаем в строймаркетах города с дополнительной скидкой для вас.</p>
-      <div class="lv-list" id="lv" data-hover-img></div>
+      <div class="lv-list" id="lv"></div>
     </div>
   </section>
 
-  <section class="bap" data-ba-pin>
+  <section class="bap" data-ba-hint>
     <div class="ba" id="ba"></div>
-    <div class="bap-cap"><div class="k">В процессе и после</div><h2 class="h2" style="margin-top:18px;font-size:clamp(36px,4.6vw,76px)">Одна точка — <em>два состояния</em></h2><p>Студия в доме 1846 года на Фонтанке. Прокручивайте или тяните ползунок.</p></div>
+    <div class="bap-cap"><div class="k">В процессе и после</div><h2 class="h2" style="margin-top:18px;font-size:clamp(36px,4.6vw,76px)">Одна точка — <em>два состояния</em></h2><p>Студия в доме 1846 года на Фонтанке. Тяните ползунок.</p></div>
   </section>
 
   <section class="qz" id="quiz">
@@ -419,7 +419,7 @@ a{color:inherit}
       </div>
       <div class="ct-form" data-fade><h3>Заявка на выезд</h3><div id="ct-form"></div></div>
     </div>
-    <div class="wm" aria-hidden="true">Композит</div>
+    <div class="wm" aria-hidden="true" data-fit="0.96">Композит</div>
   </section>
 </main>
 
@@ -462,10 +462,10 @@ a{color:inherit}
   });
   var rest = D.objects.filter(function (o) { return feat.indexOf(o) < 0; });
   KZ.render($('#more'), rest, function (o, k) {
-    return '<button type="button" class="ml" data-gallery="' + o.id + '" data-img="' + KZ.img(o.imgs[0], true) + '"><span class="n">0' + (k + 5) + '</span><b>' + esc(o.title) + '</b><span>' + esc(o.place) + ' · ' + esc(o.district) + '</span><span>' + esc(o.house) + '</span><em>Фото · ' + o.imgs.length + '</em></button>';
+    return '<button type="button" class="ml" data-gallery="' + o.id + '"><span class="n">0' + (k + 5) + '</span><b>' + esc(o.title) + '</b><span>' + esc(o.place) + ' · ' + esc(o.district) + '</span><span>' + esc(o.house) + '</span><em>Фото · ' + o.imgs.length + '</em></button>';
   });
   KZ.render($('#lv'), D.packages.slice().reverse(), function (p) {
-    return '<div class="lv-row" data-img="' + p.photo + '"><h3>' + p.name + '</h3><p><b>' + esc(p.lead) + '</b>' + esc(p.items.join(' · ')) + '</p><div class="lv-price"><b>' + num(p.rate) + ' ₽</b><small>от · за м² работ</small></div></div>';
+    return '<div class="lv-row"><h3>' + p.name + '</h3><p><b>' + esc(p.lead) + '</b>' + esc(p.items.join(' · ')) + '</p><div class="lv-price"><b>от ' + num(p.rate) + ' ₽</b><small>за м² работ</small></div></div>';
   });
   KZ.ba($('#ba'), D.beforeAfter[0]);
   KZ.quiz($('#quiz-box'), { live: '#live' });

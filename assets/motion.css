@@ -8,9 +8,6 @@
 [data-marquee]{overflow:hidden;white-space:nowrap}
 [data-marquee] .mq-track{display:inline-flex;will-change:transform}
 .split-line{display:block}
-/* лист, который следует за курсором */
-.hv-float{position:fixed;left:0;top:0;width:min(360px,28vw);aspect-ratio:4/3;pointer-events:none;z-index:70;overflow:hidden;border-radius:6px;opacity:0;transform:translate(-50%,-50%) scale(.85);box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
-.hv-float img{width:100%;height:100%;object-fit:cover}
 /* интро */
 .intro{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px}
 .intro svg{width:min(120px,26vw);height:auto;overflow:visible}
