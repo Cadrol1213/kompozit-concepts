@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Alegreya+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --cream:#F3ECE2; --card:#FBF7F1; --sand:#E8DCCB; --ink:#2A211C; --mute:#7B6E64; --line:#E0D3C2;
+  --cream:#F3ECE2; --card:#FBF7F1; --sand:#E8DCCB; --ink:#2A211C; --mute:#6A5E55; --line:#E0D3C2;
   --red:#C8321F; --red-d:#A82816; --olive:#5D6B47; --olive-l:#E3E6D6;
   --serif:'Alegreya',Georgia,serif; --sans:'Alegreya Sans',system-ui,sans-serif;
   --kz-accent:var(--red); --kz-on-accent:#fff; --kz-radius:22px; --kz-font:var(--sans); --kz-head-font:var(--serif); --kz-dialog-bg:#FBF7F1;
@@ -221,6 +221,25 @@ a{color:inherit}
   .tlv-step{grid-template-columns:50px 1fr;gap:14px}
   .tlv-step .d{width:50px;height:50px;font-size:20px}
   .tlv-line{left:23.5px}
+}
+
+/* аудит: удобные зоны нажатия на телефонах и планшетах */
+@media (max-width:1180px){
+  .logo{padding:6px 0}
+  .hdr-tel{padding:14px 0}
+  .ftr a{display:inline-block;padding:12px 0}
+}
+
+@media (max-width:600px){
+  .fan{height:360px}
+  .ph{width:52%;padding:7px 7px 34px}
+  .ph span{display:none}
+  .ph{padding-bottom:22px}
+  .ph:nth-child(1){transform:translate(-90%,-58%) rotate(-7deg)}
+  .ph:nth-child(2){transform:translate(-12%,-62%) rotate(6deg)}
+  .ph:nth-child(3){transform:translate(-58%,-30%) rotate(-2deg)}
+  .ph:nth-child(4){transform:translate(-22%,-26%) rotate(4deg);width:44%}
+  .sticker{width:104px;height:104px;font-size:13px;padding:12px;right:0;bottom:2%}
 }
 </style>
 </head>

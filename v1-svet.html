@@ -13,7 +13,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Wix+Madefor+Display:wght@500;600;700;800&family=Wix+Madefor+Text:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --paper:#F5F3EF; --white:#FFFFFF; --ink:#121212; --ink2:#2A2A28; --mute:#77736C; --line:#DDD8D0;
+  --paper:#F5F3EF; --white:#FFFFFF; --ink:#121212; --ink2:#2A2A28; --mute:#66625B; --line:#DDD8D0;
   --red:#D02820; --red-d:#AD1F18;
   --disp:'Wix Madefor Display',system-ui,sans-serif; --text:'Wix Madefor Text',system-ui,sans-serif;
   --kz-accent:var(--red); --kz-on-accent:#fff; --kz-radius:14px; --kz-font:var(--text); --kz-head-font:var(--disp);
@@ -67,7 +67,7 @@ a{color:inherit}
 
 /* hero */
 .hero{position:relative;padding:128px 0 0;overflow:hidden}
-.hero h1{font:800 clamp(48px,8.4vw,150px)/.88 var(--disp);letter-spacing:-.055em;margin:0;max-width:14ch}
+.hero h1{font:800 clamp(48px,8.4vw,134px)/.88 var(--disp);letter-spacing:-.055em;margin:0;max-width:14ch}
 .hero h1 .r{color:var(--red)}
 .hero-row{display:grid;grid-template-columns:1.1fr .8fr .9fr;gap:clamp(20px,3vw,48px);align-items:end;margin-top:clamp(28px,4vw,56px)}
 .hero-row .p{max-width:430px}
@@ -76,7 +76,7 @@ a{color:inherit}
 .rate{display:flex;justify-content:space-between;align-items:baseline;gap:12px;padding:14px 0;border-bottom:1px solid var(--line)}
 .rate > span{font:600 14px/1.2 var(--text);color:var(--mute)}
 .rate b{font:800 clamp(26px,2.4vw,38px)/1 var(--disp);letter-spacing:-.03em;white-space:nowrap}
-.rate b small{font-size:.45em;color:var(--mute);letter-spacing:0;margin-left:4px}
+.rate b small{font-size:max(12px,.45em);color:var(--mute);letter-spacing:0;margin-left:4px}
 .rates-note{font-size:13px;color:var(--mute);margin-top:10px}
 .hero-mini{position:relative}
 .hero-mini figure{margin:0;aspect-ratio:4/3;overflow:hidden;border-radius:4px}
@@ -87,8 +87,11 @@ a{color:inherit}
 .hero-band img{position:absolute;left:0;top:-15%;width:100%;height:130%;object-fit:cover}
 .hero-band .tag{position:absolute;left:var(--gut);bottom:28px;background:var(--paper);padding:14px 18px;border-radius:12px;font-size:14px;max-width:340px;line-height:1.4}
 .hero-band .tag b{display:block;font:700 16px/1.25 var(--disp)}
-.hero-bars .bar:nth-child(1){width:44vw;height:5.2vw;background:var(--red);right:-10vw;top:110px}
-.hero-bars .bar:nth-child(2){width:24vw;height:5.2vw;background:var(--ink);right:-4vw;top:calc(110px + 7vw)}
+.hero-wrap{position:relative}
+.hero-wrap > :not(.hero-bars){position:relative;z-index:1}
+.hero-bars .bar:nth-child(1){width:560px;height:70px;background:var(--red);right:-170px;top:-40px}
+.hero-bars .bar:nth-child(2){width:300px;height:70px;background:var(--ink);right:-80px;top:62px}
+@media (min-width:1181px){.hero h1{max-width:calc(100% - 300px)}}
 
 /* marquee */
 .mq{background:var(--red);color:#fff;padding:22px 0;transform:rotate(-1.5deg) translateY(-30px);margin:0 -2vw;position:relative;z-index:3}
@@ -293,6 +296,23 @@ a{color:inherit}
   .qz-opts{grid-template-columns:1fr}
   .quiz-card{min-height:0}
 }
+
+/* аудит: удобные зоны нажатия на телефонах и планшетах */
+@media (max-width:1180px){
+  .logo{padding:6px 0}
+  .hdr-tel{padding:14px 0}
+  .ftr a{display:inline-block;padding:12px 0}
+}
+.pf .lbl b,.bap .lbl b,.fin .lbl b,.pf-card .m b{color:#FF6A5E}
+@media (max-width:600px){
+  .svc-row summary{grid-template-columns:1fr 44px;row-gap:8px}
+  .svc-row h3{grid-column:1;grid-row:1}
+  .svc-row .pr{grid-column:1;grid-row:2;text-align:left}
+  .svc-row .pl{grid-column:2;grid-row:1/3;align-self:center}
+}
+
+@media (max-width:1180px){.hero-bars{display:none}}
+@media (max-width:600px){.bap-cap p{display:none}.bap-cap .h2{font-size:34px}}
 </style>
 </head>
 <body data-variant="1">
@@ -315,8 +335,8 @@ a{color:inherit}
 
 <main id="top">
   <section class="hero" data-hero>
-    <div class="hero-bars" aria-hidden="true"><span class="bar" data-speed="-0.4"></span><span class="bar" data-speed="-0.25"></span></div>
-    <div class="wrap">
+    <div class="wrap hero-wrap">
+      <div class="hero-bars" aria-hidden="true"><span class="bar" data-speed="-0.4"></span><span class="bar" data-speed="-0.25"></span></div>
       <div class="lbl" data-fade><b>(СПб + ЛО)</b> Ремонт помещений под ключ</div>
       <h1 data-split="lines">Ремонт квартир под&nbsp;ключ <span class="r">в&nbsp;Санкт-Петербурге</span></h1>
       <div class="hero-row">

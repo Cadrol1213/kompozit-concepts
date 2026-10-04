@@ -39,7 +39,7 @@ a{color:inherit}
 .btn-r::after{background:var(--ink)}
 .btn-o{background:transparent;color:var(--ink)}
 .btn-o:hover{color:#fff}
-.btn .mono{font-size:12px;opacity:.7}
+.btn .mono{font-size:13px}
 
 /* header */
 .hdr{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(236,234,228,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
@@ -47,7 +47,7 @@ a{color:inherit}
 .logo{display:flex;align-items:center;gap:10px;text-decoration:none}
 .logo img{width:30px}
 .logo b{font:900 17px/1 var(--head);letter-spacing:.04em}
-.logo span{font:500 11px/1 var(--mono);color:var(--mute);border-left:1px solid var(--line);padding-left:10px}
+.logo span{font:500 12px/1 var(--mono);color:var(--mute);border-left:1px solid var(--line);padding-left:10px}
 .nav{display:flex;margin-left:auto}
 .nav a{text-decoration:none;font:500 13px/1 var(--mono);text-transform:uppercase;padding:24px 14px;border-left:1px solid var(--line);white-space:nowrap;transition:background .2s,color .2s}
 .nav a:hover{background:var(--ink);color:var(--paper)}
@@ -75,12 +75,12 @@ a{color:inherit}
 .specs{display:grid;grid-template-columns:repeat(3,1fr);border:1.5px solid var(--ink);margin-top:40px;background:var(--white)}
 .specs div{padding:16px 18px;border-right:1.5px solid var(--ink)}
 .specs div:last-child{border:0}
-.specs small{display:block;font:500 11px/1.2 var(--mono);text-transform:uppercase;color:var(--mute)}
+.specs small{display:block;font:500 12px/1.2 var(--mono);text-transform:uppercase;color:var(--mute)}
 .specs b{display:block;font:800 clamp(22px,2.2vw,34px)/1 var(--head);letter-spacing:-.03em;margin-top:8px;white-space:nowrap}
-.specs b i{font:500 .42em var(--mono);font-style:normal;color:var(--mute);letter-spacing:0;margin-left:4px}
+.specs b i{font:500 max(12px,.42em) var(--mono);font-style:normal;color:var(--mute);letter-spacing:0;margin-left:4px}
 .photo{position:relative;border:1.5px solid var(--ink);background:var(--ink);aspect-ratio:960/1088;align-self:start;margin-top:24px;overflow:visible}
 .photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.photo .cap{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--paper);font:500 11px/1 var(--mono);text-transform:uppercase;padding:9px 12px}
+.photo .cap{position:absolute;left:0;bottom:0;background:var(--ink);color:var(--paper);font:500 12px/1 var(--mono);text-transform:uppercase;padding:9px 12px}
 .hs{position:absolute;z-index:2}
 .hs .dot{width:16px;height:16px;border-radius:50%;background:var(--red);box-shadow:0 0 0 0 rgba(208,40,32,.6);animation:pulse 2s infinite;margin:-8px 0 0 -8px}
 @keyframes pulse{70%{box-shadow:0 0 0 16px rgba(208,40,32,0)}100%{box-shadow:0 0 0 0 rgba(208,40,32,0)}}
@@ -109,7 +109,7 @@ a{color:inherit}
 .ly-img{position:absolute;inset:0;opacity:0;overflow:hidden}
 .ly-img:first-child{opacity:1}
 .ly-img img{width:100%;height:100%;object-fit:cover}
-.ly-img span{position:absolute;left:0;bottom:0;background:var(--red);color:#fff;font:500 11px/1 var(--mono);text-transform:uppercase;padding:9px 12px}
+.ly-img span{position:absolute;left:0;bottom:0;background:var(--red);color:#fff;font:500 12px/1 var(--mono);text-transform:uppercase;padding:9px 12px}
 .ly-mob{display:none}
 
 /* price calc */
@@ -136,13 +136,13 @@ a{color:inherit}
 .pc-total-val{font:900 clamp(28px,3vw,42px)/1.1 var(--head);letter-spacing:-.03em;color:#fff}
 .pc-total-note{font:400 12px/1.4 var(--mono);color:rgba(236,234,228,.5);margin-top:6px;max-width:560px}
 .pc-send{font:700 14px/1 var(--head);text-transform:uppercase;padding:18px 22px;border:0;background:var(--red);color:#fff;cursor:pointer}
-.pc-send:disabled{opacity:.35;cursor:not-allowed}
+.pc-send:disabled{background:#4A4A47;color:#E6E4DE;cursor:not-allowed}
 
 /* journal */
 .jr-sec{padding:0 0 clamp(80px,10vw,140px)}
 .filters{display:flex;flex-wrap:wrap;gap:6px;margin:30px 0 0}
 .pf-filter{font:500 12px/1 var(--mono);text-transform:uppercase;padding:10px 12px;border:1.5px solid var(--ink);background:transparent;cursor:pointer;color:var(--ink)}
-.pf-filter sup{font-size:10px;color:var(--mute)}
+.pf-filter sup{font-size:12px;color:var(--mute)}
 .pf-filter[aria-pressed=true]{background:var(--ink);color:var(--paper)}
 .pf-filter[aria-pressed=true] sup{color:rgba(236,234,228,.6)}
 .jr{margin-top:20px;border-top:1.5px solid var(--ink)}
@@ -150,7 +150,7 @@ a{color:inherit}
 .jr-row:hover{background:var(--white);padding-left:12px;padding-right:12px}
 .jr-row .no{font:500 13px var(--mono);color:var(--mute)}
 .jr-row h3{font:700 clamp(17px,1.4vw,21px)/1.2 var(--head);letter-spacing:-.02em;margin:0}
-.jr-row .k{font:500 10px/1 var(--mono);text-transform:uppercase;color:var(--mute);display:block;margin-bottom:5px}
+.jr-row .k{font:500 12px/1 var(--mono);text-transform:uppercase;color:var(--mute);display:block;margin-bottom:5px}
 .jr-row .v{font-size:14px;font-weight:500}
 .jr-row .go{font:700 12px/1 var(--mono);text-transform:uppercase;border:1.5px solid var(--ink);padding:10px 12px;white-space:nowrap}
 .jr-row:hover .go{background:var(--red);border-color:var(--red);color:#fff}
@@ -161,7 +161,7 @@ a{color:inherit}
 .duo figure{margin:0;border:1.5px solid var(--ink);background:var(--ink)}
 .duo .ba{aspect-ratio:4/3}
 .duo figcaption{background:var(--white);padding:12px 16px;font:500 13px/1.3 var(--mono);border-top:1.5px solid var(--ink);display:flex;justify-content:space-between;gap:10px}
-.ba-tag{border-radius:0;font:500 10px/1 var(--mono);text-transform:uppercase;background:var(--ink)}
+.ba-tag{border-radius:0;font:500 12px/1 var(--mono);text-transform:uppercase;background:var(--ink)}
 .ba-tag-a{background:var(--red)}
 .ba-knob{border-radius:0;background:var(--paper);border:1.5px solid var(--ink);box-shadow:none;color:var(--ink)}
 .ba-line{background:var(--paper);width:2px}
@@ -169,12 +169,12 @@ a{color:inherit}
 /* quiz */
 .qz-sec{background:var(--red);color:#fff;padding:clamp(80px,10vw,140px) 0}
 .qz-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,80px);align-items:start}
-.qz-sec .tag{color:rgba(255,255,255,.75)}.qz-sec .tag b{color:#fff}
+.qz-sec .tag{color:#fff}.qz-sec .tag b{color:#fff}
 .qz-sec .h2{color:#fff;margin:16px 0 26px}
 .live{border:1.5px solid #fff;padding:20px}
-.live small{font:500 12px var(--mono);text-transform:uppercase;opacity:.75}
+.live small{font:500 12px var(--mono);text-transform:uppercase}
 .live output{display:block;font:900 clamp(32px,3.6vw,54px)/1.05 var(--head);letter-spacing:-.03em;margin:10px 0 8px}
-.live p{margin:0;font:400 12px/1.5 var(--mono);opacity:.8}
+.live p{margin:0;font:400 13px/1.5 var(--mono)}
 .quiz-card{background:var(--paper);color:var(--ink);border:1.5px solid var(--ink);box-shadow:12px 12px 0 var(--ink);padding:clamp(20px,3vw,36px);min-height:500px}
 .qz-q{font:800 clamp(22px,2.2vw,30px)/1.15 var(--head);text-transform:uppercase;letter-spacing:-.02em}
 .qz-opt{border:1.5px solid var(--ink);border-radius:0;background:var(--white)}
@@ -242,7 +242,7 @@ a{color:inherit}
 .ct-rows a:hover b{color:var(--red)}
 .ct-form{background:var(--paper);color:var(--ink);border:1.5px solid var(--paper);padding:28px;box-shadow:10px 10px 0 var(--red)}
 .ct-form h3{font:800 20px/1.2 var(--head);text-transform:uppercase;margin:0 0 18px}
-.stamp{margin-top:clamp(60px,8vw,110px);border-top:1px solid rgba(236,234,228,.2);display:grid;grid-template-columns:repeat(4,1fr);font:500 11px/1.5 var(--mono);text-transform:uppercase;color:rgba(236,234,228,.5)}
+.stamp{margin-top:clamp(60px,8vw,110px);border-top:1px solid rgba(236,234,228,.2);display:grid;grid-template-columns:repeat(4,1fr);font:500 12px/1.5 var(--mono);text-transform:uppercase;color:rgba(236,234,228,.5)}
 .stamp div{padding:16px 16px 18px 0;border-right:1px solid rgba(236,234,228,.2)}
 .stamp div:last-child{border:0}
 .stamp b{display:block;color:var(--paper);font-weight:500}
@@ -306,6 +306,28 @@ a{color:inherit}
   .tl-steps,.vd-grid{grid-template-columns:1fr}
   .ct-form{box-shadow:6px 6px 0 var(--red)}
 }
+
+/* аудит: удобные зоны нажатия на телефонах и планшетах */
+@media (max-width:1180px){
+  .logo{padding:6px 0}
+  .hdr-tel{padding:14px 0}
+  .ftr a{display:inline-block;padding:12px 0}
+}
+.tag b{color:#B01E17}
+.layers .tag b,.ct .tag b,.ly-step .no,.ly-mob .no{color:#FF5A4F}
+.qz-sec .tag b{color:#fff}
+.hdr .tag b{color:#B01E17}
+@media (max-width:1280px){
+  .hs svg{display:none}
+  .hs .lbl{left:-12px!important;right:auto!important;top:16px!important}
+  .hs.r .lbl{left:auto!important;right:-12px!important}
+}
+
+@media (max-width:480px){
+  .pc-row{grid-template-columns:auto 1fr;gap:10px 14px}
+  .pc-name{grid-column:1/-1}
+  .pc-sum{grid-column:auto;text-align:right;align-self:center}
+}
 </style>
 </head>
 <body data-variant="3">
@@ -349,7 +371,7 @@ a{color:inherit}
         <img src="img/en-cable-ceiling.jpg" alt="Черновая электрика: кабели в гофре по потолку и распаечная коробка" fetchpriority="high">
         <div class="hs" style="left:30%;top:25%"><div class="dot"></div><svg width="110" height="50" style="left:0;top:0" data-draw><path d="M0 0 L40 -40 H110" stroke="#111110" stroke-width="1.5" fill="none"/></svg><div class="lbl" style="left:112px;top:-60px"><b>Кабель в гофре по потолку</b>70 ₽/м.п.</div></div>
         <div class="hs" style="left:51%;top:40%"><div class="dot"></div><svg width="110" height="50" style="left:0;top:0" data-draw><path d="M0 0 L40 40 H110" stroke="#111110" stroke-width="1.5" fill="none"/></svg><div class="lbl" style="left:112px;top:22px"><b>Слаботочные сети</b>интернет, ТВ</div></div>
-        <div class="hs" style="left:79%;top:70%"><div class="dot"></div><svg width="110" height="50" style="right:0;top:0" data-draw><path d="M0 0 L-40 -40 H-110" stroke="#111110" stroke-width="1.5" fill="none"/></svg><div class="lbl" style="right:112px;top:-60px"><b>Распайка коробки</b>450 ₽/шт.</div></div>
+        <div class="hs r" style="left:79%;top:70%"><div class="dot"></div><svg width="110" height="50" style="right:0;top:0" data-draw><path d="M0 0 L-40 -40 H-110" stroke="#111110" stroke-width="1.5" fill="none"/></svg><div class="lbl" style="right:112px;top:-60px"><b>Распайка коробки</b>450 ₽/шт.</div></div>
         <span class="cap">Черновая электрика · фото с объекта</span>
       </div>
     </div>
