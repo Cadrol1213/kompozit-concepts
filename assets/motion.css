@@ -1,0 +1,26 @@
+/* Состояния до анимации. Класс m-anim ставится в <head>, если анимации разрешены. */
+.m-anim [data-fade],
+.m-anim [data-stagger] > *,
+.m-anim [data-split]{visibility:hidden}
+.m-anim [data-reveal-img]{clip-path:inset(100% 0 0 0)}
+.m-static [data-reveal-img]{clip-path:none}
+[data-speed]{will-change:transform}
+[data-marquee]{overflow:hidden;white-space:nowrap}
+[data-marquee] .mq-track{display:inline-flex;will-change:transform}
+.split-line{display:block}
+/* лист, который следует за курсором */
+.hv-float{position:fixed;left:0;top:0;width:min(360px,28vw);aspect-ratio:4/3;pointer-events:none;z-index:70;overflow:hidden;border-radius:6px;opacity:0;transform:translate(-50%,-50%) scale(.85);box-shadow:0 30px 60px -20px rgba(0,0,0,.45)}
+.hv-float img{width:100%;height:100%;object-fit:cover}
+/* интро */
+.intro{position:fixed;inset:0;z-index:2000;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:22px}
+.intro svg{width:min(120px,26vw);height:auto;overflow:visible}
+.intro .intro-word{overflow:hidden}
+.intro .intro-word span{display:inline-block}
+.m-static .intro{display:none}
+/* шапка, скрывающаяся при прокрутке вниз */
+[data-header]{transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.hdr-hidden [data-header]{transform:translateY(-110%)}
+.menu-open [data-header]{transform:none}
+html.lenis,html.lenis body{height:auto}
+.lenis.lenis-smooth{scroll-behavior:auto!important}
+.lenis.lenis-stopped{overflow:hidden}

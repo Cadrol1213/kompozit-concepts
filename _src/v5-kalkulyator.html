@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ремонт квартир под ключ в СПб — «Композит» · концепт 5 «Расчёт»</title>
+<meta name="description" content="Рассчитайте стоимость ремонта квартиры в Санкт-Петербурге онлайн: косметический от 3 400 ₽/м², капитальный от 7 900 ₽/м², дизайнерский от 10 800 ₽/м². Смета бесплатно.">
+{{HEAD}}
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Commissioner:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F2F2EF; --card:#FFFFFF; --ink:#111113; --mute:#64656B; --line:#E3E3DE; --soft:#F7F7F4;
+  --red:#D02820; --red-d:#B01F18; --red-l:#FBE8E6; --ok:#1F9A62; --ok-l:#E1F4EA;
+  --f:'Commissioner',system-ui,sans-serif;
+  --kz-accent:var(--red); --kz-on-accent:#fff; --kz-radius:16px; --kz-font:var(--f);
+  --r:22px; --gut:clamp(14px,3vw,32px);
+}
+*{box-sizing:border-box}
+html{background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.55 var(--f);-webkit-font-smoothing:antialiased}
+main{overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--red);color:#fff}
+.wrap{max-width:1260px;margin:0 auto;padding:0 var(--gut)}
+.sec{padding:clamp(56px,7vw,100px) 0}
+.chip{display:inline-flex;align-items:center;gap:8px;font:700 13px/1 var(--f);padding:8px 12px;border-radius:999px;background:var(--red-l);color:var(--red)}
+.h2{font:800 clamp(30px,3.6vw,48px)/1.08 var(--f);letter-spacing:-.035em;margin:14px 0 10px}
+.lead{font-size:clamp(16px,1.3vw,18px);color:var(--mute);max-width:620px;margin:0}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;font:700 16px/1 var(--f);padding:16px 22px;border-radius:14px;border:0;background:var(--red);color:#fff;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background .2s,transform .2s}
+.btn:hover{background:var(--red-d)}
+.btn:active{transform:scale(.98)}
+.btn-l{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn-l:hover{background:var(--card);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.ic{width:20px;height:20px;flex:none}
+
+/* header */
+.hdr{position:fixed;top:0;left:0;right:0;z-index:60;background:rgba(242,242,239,.86);backdrop-filter:blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.scrolled .hdr{border-color:var(--line)}
+.hdr .wrap{display:flex;align-items:center;gap:18px;height:68px}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 19px/1 var(--f);letter-spacing:-.02em}
+.logo img{width:30px}
+.hours{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--mute)}
+.hours::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--ok)}
+.nav{display:flex;gap:2px;margin-left:auto}
+.nav a{text-decoration:none;font:600 15px/1 var(--f);padding:10px 12px;border-radius:10px;color:var(--mute);white-space:nowrap}
+.nav a:hover{background:var(--card);color:var(--ink)}
+.nav .nav-tel{display:none}
+.icb{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);text-decoration:none;transition:.2s}
+.icb:hover{background:var(--red);color:#fff;box-shadow:none}
+.hdr-tel{text-decoration:none;font:700 16px/1 var(--f);white-space:nowrap;margin-left:6px}
+.burger{display:none;width:42px;height:42px;border-radius:12px;border:0;background:var(--ink);cursor:pointer;position:relative;margin-left:auto}
+.burger::before,.burger::after{content:"";position:absolute;left:12px;right:12px;height:2px;border-radius:2px;background:#fff;transition:.3s}
+.burger::before{top:16px}.burger::after{top:24px}
+.menu-open .burger::before{top:20px;transform:rotate(45deg)}.menu-open .burger::after{top:20px;transform:rotate(-45deg)}
+
+/* intro */
+.intro{background:var(--bg);clip-path:inset(0 0 0 0)}
+.intro-word{font:800 20px/1 var(--f);letter-spacing:.2em}
+
+/* hero */
+.hero{padding:96px 0 clamp(40px,5vw,64px)}
+.hero .wrap{display:grid;grid-template-columns:minmax(0,.95fr) minmax(0,1.05fr);gap:clamp(20px,3.6vw,48px);align-items:start}
+.hero h1{font:900 clamp(34px,4.4vw,62px)/1.02 var(--f);letter-spacing:-.045em;margin:16px 0 14px}
+.hero h1 span{color:var(--red)}
+.est{margin-top:24px;background:var(--ink);color:#fff;border-radius:var(--r);padding:22px 24px 20px;position:relative;overflow:hidden}
+.est small{display:block;font:600 13px var(--f);color:rgba(255,255,255,.55)}
+.est .val{font:900 clamp(30px,3.4vw,46px)/1.1 var(--f);letter-spacing:-.035em;margin:8px 0 18px;min-height:1.1em;font-variant-numeric:tabular-nums}
+.est .note{font-size:13px;color:rgba(255,255,255,.55);margin:14px 0 0}
+#live{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.scale{position:relative;height:42px}
+.scale .tr{position:absolute;left:0;right:0;top:14px;height:6px;border-radius:6px;background:linear-gradient(90deg,#3a3a3e,#6b2420 60%,var(--red))}
+.scale .tk{position:absolute;top:26px;font:600 11px/1 var(--f);color:rgba(255,255,255,.55);transform:translateX(-50%);white-space:nowrap}
+.scale .tk::before{content:"";position:absolute;left:50%;top:-12px;width:1px;height:8px;background:rgba(255,255,255,.35)}
+.scale .mk{position:absolute;top:6px;left:0;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:#fff;box-shadow:0 0 0 5px rgba(208,40,32,.45);opacity:0}
+.bens{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px}
+.bens li{display:flex;gap:12px;align-items:center;font-weight:600;font-size:15px}
+.bens li span{flex:none;width:28px;height:28px;border-radius:9px;background:var(--ok-l);display:grid;place-items:center}
+.quiz-card{background:var(--card);border-radius:26px;padding:clamp(20px,2.6vw,30px);box-shadow:0 1px 0 var(--line),0 40px 70px -50px rgba(17,17,19,.45);min-height:560px;position:relative}
+.quiz-card .qhead{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;font:700 13px var(--f);color:var(--mute);text-transform:uppercase;letter-spacing:.06em}
+.quiz-card .qhead b{color:var(--ok);font-weight:700;text-transform:none;letter-spacing:0}
+.qz-stage{position:relative}
+.qz-opts{grid-template-columns:1fr 1fr}
+.qz-opt{border:1.5px solid var(--line);border-radius:14px;padding:16px 16px 16px 48px;position:relative;background:var(--card);transition:border-color .15s,background .15s,transform .15s}
+.qz-opt:hover{transform:translateY(-2px)}
+.qz-opt::before{content:"";position:absolute;left:16px;top:17px;width:18px;height:18px;border-radius:50%;box-shadow:inset 0 0 0 2px var(--line);background:#fff;transition:.2s}
+.qz-opt[aria-pressed=true]{border-color:var(--red);background:var(--red-l)}
+.qz-opt[aria-pressed=true]::before{box-shadow:inset 0 0 0 6px var(--red)}
+.qz-q{font:800 24px/1.2 var(--f);letter-spacing:-.025em}
+.qz-bar{height:8px}
+.qz-next{border-radius:12px}
+.qz-sum{letter-spacing:-.035em;color:var(--red)}
+.qz-range-val{color:var(--red);font-variant-numeric:tabular-nums}
+.lf-input,.lf-submit{border-radius:12px}
+
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.stat{background:var(--card);border-radius:var(--r);padding:22px;box-shadow:0 1px 0 var(--line);transition:transform .3s,box-shadow .3s}
+.stat:hover{transform:translateY(-4px);box-shadow:0 1px 0 var(--line),0 24px 40px -30px rgba(17,17,19,.4)}
+.stat b{display:block;font:900 clamp(34px,3.6vw,48px)/1 var(--f);letter-spacing:-.04em}
+.stat span{display:block;margin-top:8px;color:var(--mute);font-size:14px;line-height:1.4}
+.stat a{color:var(--red);font-weight:700;text-decoration:none;font-size:14px;display:inline-block;margin-top:10px}
+
+/* districts chart */
+.geo{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(20px,4vw,56px);align-items:start}
+.bars{background:var(--card);border-radius:var(--r);padding:20px 22px;box-shadow:0 1px 0 var(--line)}
+.brow{display:grid;grid-template-columns:150px 1fr 30px;gap:12px;align-items:center;padding:7px 0;border:0;background:none;width:100%;font:600 14px var(--f);color:var(--ink);text-align:left}
+.brow[data-has]{cursor:pointer}
+.brow[data-has]:hover .bt i{background:var(--red-d)}
+.brow .bt{height:14px;border-radius:7px;background:var(--soft);overflow:hidden}
+.brow .bt i{display:block;height:100%;border-radius:7px;background:var(--red);transform-origin:left}
+.brow:not([data-has]) .bt i{background:#C9C9C3}
+.brow b{text-align:right;font-variant-numeric:tabular-nums}
+.brow.on{color:var(--red)}
+.bars-note{font-size:13px;color:var(--mute);margin:10px 0 0}
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin:30px 0 16px}
+.pf-filter{font:600 14px/1 var(--f);padding:10px 14px;border-radius:10px;border:0;background:var(--card);box-shadow:inset 0 0 0 1px var(--line);cursor:pointer;color:var(--ink)}
+.pf-filter sup{color:var(--mute);font-size:11px}
+.pf-filter[aria-pressed=true]{background:var(--ink);color:#fff;box-shadow:none}
+.pf-filter[aria-pressed=true] sup{color:rgba(255,255,255,.6)}
+.pf-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.pf-card{background:var(--card);border-radius:var(--r);overflow:hidden;box-shadow:0 1px 0 var(--line);display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s}
+.pf-card:hover{transform:translateY(-6px);box-shadow:0 1px 0 var(--line),0 30px 50px -36px rgba(17,17,19,.5)}
+.pf-media{aspect-ratio:16/11}
+.pf-body{padding:16px 18px 18px;display:flex;flex-direction:column;flex:1}
+.pf-meta{display:flex;gap:6px;flex-wrap:wrap}
+.pf-meta span{font:600 12px/1 var(--f);padding:6px 9px;border-radius:8px;background:var(--soft);color:var(--mute)}
+.pf-tag{background:var(--red-l)!important;color:var(--red)!important}
+.pf-title{font:700 18px/1.25 var(--f);margin:10px 0 6px;letter-spacing:-.015em}
+.pf-text{margin:0 0 10px;font-size:14px;color:var(--mute)}
+.pf-foot{margin-top:auto;display:grid;gap:2px;font-size:13px;color:var(--mute)}
+
+/* compare */
+.cmp{margin-top:28px;background:var(--card);border-radius:26px;overflow:hidden;box-shadow:0 1px 0 var(--line)}
+.cmp-wrap{overflow-x:auto}
+.cmp table{width:100%;border-collapse:collapse;min-width:640px}
+.cmp th,.cmp td{padding:16px 20px;border-bottom:1px solid var(--line);text-align:center}
+.cmp th:first-child,.cmp td:first-child{text-align:left;font-weight:600}
+.cmp thead th{font:800 17px/1.2 var(--f);vertical-align:bottom;background:var(--soft)}
+.cmp thead th small{display:block;font:900 26px/1.1 var(--f);color:var(--red);margin-top:6px;letter-spacing:-.03em}
+.cmp thead th small i{font-style:normal;font-size:13px;color:var(--mute);font-weight:600;letter-spacing:0}
+.cmp thead th.f{background:var(--ink);color:#fff}
+.cmp thead th.f small{color:#fff}
+.cmp td.f{background:#FAF6F5}
+.cmp tbody tr{transition:background .2s}
+.cmp tbody tr:hover{background:var(--soft)}
+.cmp .y{color:var(--ok);font-weight:900;font-size:18px}
+.cmp .n{color:#C2C2BC}
+.cmp .p{font-size:13px;color:var(--mute);font-weight:600}
+.cmp tfoot td{border:0;padding:18px 20px}
+
+/* proof */
+.two{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:16px;margin-top:28px}
+.box{background:var(--card);border-radius:26px;padding:20px;box-shadow:0 1px 0 var(--line)}
+.box h3{font:800 20px/1.2 var(--f);margin:0 0 4px;letter-spacing:-.02em}
+.box p{margin:0 0 14px;color:var(--mute);font-size:14px}
+.ba{border-radius:16px;aspect-ratio:16/10}
+.seg{display:flex;gap:4px;background:var(--soft);border-radius:12px;padding:4px;margin-top:12px;overflow-x:auto}
+.seg button{flex:1;font:600 13px/1.2 var(--f);padding:10px;border:0;border-radius:9px;background:none;cursor:pointer;color:var(--mute);white-space:nowrap}
+.seg button[aria-pressed=true]{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(17,17,19,.12)}
+.vd-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vd-thumb{border-radius:12px}
+.vd-play{width:46px;height:46px;margin:-23px 0 0 -23px;background:var(--red)}
+.vd-play::after{left:18px;top:14px;border-width:9px 0 9px 14px;border-left-color:#fff}
+.vd-title{display:block;font:600 13px/1.3 var(--f);margin-top:8px}
+.vd-grid .vd-card:nth-child(n+5){display:none}
+.vd-grid.all .vd-card{display:block}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-top:28px;position:relative}
+.step{background:var(--card);border-radius:18px;padding:18px;box-shadow:0 1px 0 var(--line);position:relative}
+.step .n{display:grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--red-l);color:var(--red);font-weight:900;margin-bottom:14px}
+.step h3{font:700 16px/1.25 var(--f);margin:0 0 4px}
+.step p{margin:0;font-size:13px;color:var(--mute)}
+
+/* faq */
+.faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:28px;align-items:start}
+.faq-item{background:var(--card);border-radius:16px;padding:0 20px;box-shadow:0 1px 0 var(--line);margin-bottom:12px}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:14px;padding:18px 0;font:700 16px/1.35 var(--f)}
+.faq-icon{flex:none;width:28px;height:28px;border-radius:9px;background:var(--soft);position:relative;transition:.25s}
+.faq-icon::before,.faq-icon::after{content:"";position:absolute;left:8px;right:8px;top:13px;height:2px;background:var(--ink);border-radius:2px;transition:.25s}
+.faq-icon::after{transform:rotate(90deg)}
+.faq-item[open] .faq-icon{background:var(--red)}
+.faq-item[open] .faq-icon::before,.faq-item[open] .faq-icon::after{background:#fff}
+.faq-item[open] .faq-icon::after{transform:rotate(0)}
+.faq-a p{margin:0 0 18px;color:var(--mute);font-size:15px}
+
+/* final */
+.final{background:var(--ink);color:#fff;border-radius:30px;padding:clamp(24px,4vw,52px);display:grid;grid-template-columns:minmax(0,1fr) 420px;gap:clamp(24px,4vw,52px);align-items:center;position:relative;overflow:hidden}
+.final::after{content:"";position:absolute;right:-6%;top:-30%;width:46%;aspect-ratio:1;background:url(assets/logo-mark-light.svg) center/contain no-repeat;opacity:.06;transform:rotate(-12deg);pointer-events:none}
+.final .h2{color:#fff}
+.final .lead{color:rgba(255,255,255,.7)}
+.final-c{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px;position:relative;z-index:1}
+.final-c a{display:inline-flex;gap:10px;align-items:center;background:rgba(255,255,255,.08);border-radius:12px;padding:12px 14px;text-decoration:none;font-weight:700;transition:background .2s}
+.final-c a:hover{background:var(--red)}
+.final-c small{font-weight:500;opacity:.7}
+.final-f{background:var(--card);color:var(--ink);border-radius:20px;padding:24px;position:relative;z-index:1}
+.final-f h3{margin:0 0 14px;font:800 20px/1.2 var(--f)}
+.ftr{padding:30px 0 110px;font-size:13px;color:var(--mute)}
+.ftr .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ftr a{text-decoration:none}
+.mbar{display:none}
+
+@media (max-width:1180px){
+  .nav,.hours{display:none}
+  .burger{display:block}
+  .menu-open .hdr{background:var(--bg)}
+  .menu-open .nav{display:flex;flex-direction:column;position:fixed;top:68px;left:0;right:0;height:calc(100dvh - 68px);background:var(--bg);padding:14px var(--gut);margin:0;gap:6px;overflow:auto}
+  .menu-open .nav a{font:700 20px/1 var(--f);padding:18px 16px;background:var(--card);border-radius:14px;color:var(--ink)}
+  .menu-open .nav .nav-tel{display:block;color:var(--red)}
+  .steps{grid-template-columns:repeat(3,1fr)}
+}
+@media (max-width:960px){
+  .hero .wrap,.geo,.two,.final{grid-template-columns:minmax(0,1fr)}
+  .stats{grid-template-columns:1fr 1fr}
+  .pf-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .faq-cols{grid-template-columns:1fr}
+}
+@media (max-width:700px){
+  .hdr .wrap{height:62px}
+  .menu-open .nav{top:62px;height:calc(100dvh - 62px)}
+  .hdr-tel,.icb{display:none}
+  .qz-opts{grid-template-columns:1fr}
+  .quiz-card{min-height:0}
+  .pf-grid{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .brow{grid-template-columns:110px 1fr 24px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1.4fr;gap:6px;position:fixed;left:0;right:0;bottom:0;z-index:80;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:8px 10px calc(8px + env(safe-area-inset-bottom))}
+  .mbar a{display:flex;align-items:center;justify-content:center;gap:6px;height:48px;border-radius:12px;text-decoration:none;font:700 14px/1 var(--f);background:var(--soft)}
+  .mbar a.mb-p{background:var(--red);color:#fff}
+}
+@media (max-width:420px){.stats{grid-template-columns:1fr}}
+</style>
+</head>
+<body data-variant="5">
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-phone" viewBox="0 0 24 24"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 006.6 6.6l2.2-2.2a1 1 0 011-.25 11.4 11.4 0 003.6.57 1 1 0 011 1V20a1 1 0 01-1 1A17 17 0 013 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1z"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><path fill="currentColor" d="M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3zm0 16.2a7.2 7.2 0 01-3.7-1l-.3-.2-2.7.7.7-2.6-.2-.3A7.2 7.2 0 1112 19.2z"/></symbol>
+  <symbol id="i-send" viewBox="0 0 24 24"><path fill="currentColor" d="M21.4 3.3L2.9 10.5c-1 .4-1 1.8.1 2.1l4.6 1.5 1.7 5.4c.3.9 1.4 1.1 2 .4l2.5-2.6 4.8 3.5c.7.5 1.7.1 1.9-.8l3-14.6c.2-1-.8-1.9-1.8-1.5zM9.7 14.6l-.4 3.6-1.3-4.2 9.5-6.7-7.8 7.3z"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="#1F9A62" stroke-width="3" d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+</svg>
+
+<div class="intro" data-intro aria-hidden="true">{{LOGO}}<div class="intro-word"><span>К</span><span>О</span><span>М</span><span>П</span><span>О</span><span>З</span><span>И</span><span>Т</span></div></div>
+
+<header class="hdr" data-header>
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="assets/logo-mark.svg" alt="">Композит</a>
+    <span class="hours">Пн–Сб, 10:00–19:00</span>
+    <nav class="nav" data-menu aria-label="Основное меню">
+      <a href="#works">Объекты</a><a href="#compare">Что входит</a><a href="#proof">Отзывы</a><a href="#faq">Вопросы</a><a href="#contacts">Контакты</a>
+      <a class="nav-tel" href="tel:+78126421735">+7 (812) 642-17-35</a>
+    </nav>
+    <a class="icb" href="https://wa.me/79643421735" target="_blank" rel="noopener" aria-label="WhatsApp"><svg class="ic"><use href="#i-chat"/></svg></a>
+    <a class="icb" href="https://t.me/compozitspb" target="_blank" rel="noopener" aria-label="Telegram"><svg class="ic"><use href="#i-send"/></svg></a>
+    <a class="hdr-tel" href="tel:+78126421735">+7 (812) 642-17-35</a>
+    <button class="burger" data-menu-toggle aria-label="Меню" aria-expanded="false"></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" id="quiz" data-hero>
+    <div class="wrap">
+      <div>
+        <span class="chip" data-fade>Расчёт онлайн · без звонка</span>
+        <h1 data-split="lines">Ремонт квартир под&nbsp;ключ <span>в&nbsp;Санкт-Петербурге</span></h1>
+        <p class="lead" data-fade>Ответьте на пять вопросов — сумма пересчитывается сразу. Считаем по тем же ценам за м², что в прайсе.</p>
+        <div class="est" data-fade aria-live="polite">
+          <small>Ваш расчёт · <span data-qz-live-area>45 м²</span></small>
+          <div class="val" id="val">—</div>
+          <output id="live">—</output>
+          <div class="scale" aria-hidden="true"><span class="tr"></span><span class="mk" id="mk"></span>
+            <span class="tk" style="left:4%">3 400</span><span class="tk" style="left:58%">7 900</span><span class="tk" style="left:96%">10 800 ₽/м²</span></div>
+          <p class="note">Стоимость работ без материалов. Точная смета — бесплатно после выезда.</p>
+        </div>
+        <ul class="bens" data-stagger>
+          <li><span><svg class="ic" style="width:16px;height:16px"><use href="#i-check"/></svg></span>Смета фиксирована и не меняется до конца работ</li>
+          <li><span><svg class="ic" style="width:16px;height:16px"><use href="#i-check"/></svg></span>Каждый этап принимаете и оплачиваете отдельно</li>
+          <li><span><svg class="ic" style="width:16px;height:16px"><use href="#i-check"/></svg></span>Выезд специалиста и смета — бесплатно</li>
+        </ul>
+      </div>
+      <div class="quiz-card" data-fade><div class="qhead">Расчёт стоимости <b>● по прайсу 2026</b></div><div id="quiz-box"></div></div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <div class="stats" data-stagger>
+        <div class="stat"><b><span data-count="30" data-count-prefix="≈">≈30</span></b><span>объектов с адресами, типом дома и составом работ в портфолио</span><a href="#works">Смотреть →</a></div>
+        <div class="stat"><b><span data-count="12">12</span></b><span>видеоотзывов клиентов на нашем YouTube-канале</span><a href="#proof">Смотреть →</a></div>
+        <div class="stat"><b><span data-count="209">209</span></b><span>позиций в прайс-листе 2026 года — цены за работу открыто</span><a href="#compare">Подробнее →</a></div>
+        <div class="stat"><b><span data-count="13">13</span></b><span>районов СПб и городов области, где есть наши объекты</span><a href="#works">Где →</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="works" style="padding-top:0">
+    <div class="wrap">
+      <div class="geo">
+        <div><span class="chip" data-fade>Портфолио</span><h2 class="h2" data-split>Мы работали рядом с&nbsp;вами</h2><p class="lead" data-fade>Объекты из нашего портфолио по районам — от Приморского до Пушкина и Мурино. Нажмите на район, чтобы увидеть фото.</p></div>
+        <div class="bars" id="bars"></div>
+      </div>
+      <div class="filters" id="pf-filters"></div>
+      <div class="pf-grid" id="pf"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="compare" style="padding-top:0">
+    <div class="wrap">
+      <span class="chip" data-fade>Что входит</span>
+      <h2 class="h2" data-split>Сравните виды ремонта</h2>
+      <p class="lead" data-fade>Цены за м² работ, без материалов. Полный прайс — более 200 позиций: от демонтажа до электрики.</p>
+      <div class="cmp" data-fade><div class="cmp-wrap"><table>
+        <thead><tr><th></th><th>Косметический<small>от 3 400 <i>₽/м²</i></small></th><th class="f">Капитальный<small>от 7 900 <i>₽/м²</i></small></th><th>Дизайнерский<small>от 10 800 <i>₽/м²</i></small></th></tr></thead>
+        <tbody id="cmp-body">
+          <tr><td>Подготовка, выравнивание стен и потолков</td><td class="y">✓</td><td class="y f">✓</td><td class="y">✓</td></tr>
+          <tr><td>Обои, покраска, напольные покрытия</td><td class="y">✓</td><td class="y f">✓</td><td class="y">✓</td></tr>
+          <tr><td>Чистовая электрика</td><td class="y">✓</td><td class="y f">✓</td><td class="y">✓</td></tr>
+          <tr><td>Перепланировка, новые стены и перегородки</td><td class="n">—</td><td class="y f">✓</td><td class="y">✓</td></tr>
+          <tr><td>Черновая электрика, щит, слаботочка</td><td class="n">—</td><td class="y f">✓</td><td class="y">✓</td></tr>
+          <tr><td>Черновая сантехника, инсталляции</td><td class="n">—</td><td class="y f">✓</td><td class="y">✓</td></tr>
+          <tr><td>Штукатурка по маякам, стяжка</td><td class="p">по необходимости</td><td class="y f">✓</td><td class="y">✓</td></tr>
+          <tr><td>Плитка, тёплые полы</td><td class="n">—</td><td class="y f">✓</td><td class="y">✓</td></tr>
+          <tr><td>Дизайн-проект, 3D-визуализация</td><td class="n">—</td><td class="n f">—</td><td class="y">✓</td></tr>
+          <tr><td>Авторский надзор дизайнера</td><td class="n">—</td><td class="n f">—</td><td class="y">✓</td></tr>
+          <tr><td>Вывоз мусора и уборка</td><td class="y">✓</td><td class="y f">✓</td><td class="y">✓</td></tr>
+        </tbody>
+        <tfoot><tr><td></td><td><a class="btn btn-l" href="#quiz" data-goto-quiz>Рассчитать</a></td><td class="f"><a class="btn" href="#quiz" data-goto-quiz>Рассчитать</a></td><td><a class="btn btn-l" href="#quiz" data-goto-quiz>Рассчитать</a></td></tr></tfoot>
+      </table></div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="proof" style="padding-top:0">
+    <div class="wrap">
+      <span class="chip" data-fade>Доказательства</span>
+      <h2 class="h2" data-split>Фото с объектов и видео от клиентов</h2>
+      <div class="two">
+        <div class="box" data-fade>
+          <h3>В процессе → готово</h3><p id="ba-cap">Снимки с одной точки на наших объектах. Потяните ползунок.</p>
+          <div class="ba" id="ba"></div>
+          <div class="seg" id="seg"></div>
+        </div>
+        <div class="box" data-fade>
+          <h3>Видеоотзывы</h3><p>12 видео на YouTube-канале «Композит».</p>
+          <div class="vd-grid" id="videos"></div>
+          <button class="btn btn-l" id="vd-all" style="width:100%;margin-top:14px">Показать все 12</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:0">
+    <div class="wrap">
+      <span class="chip" data-fade>Как работаем</span>
+      <h2 class="h2" data-split>От заявки до приёмки — 6 шагов</h2>
+      <div class="steps" id="steps" data-stagger></div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <span class="chip" data-fade>Вопросы</span>
+      <h2 class="h2" data-split>Частые вопросы</h2>
+      <div class="faq-cols"><div id="faq-a"></div><div id="faq-b"></div></div>
+    </div>
+  </section>
+
+  <section class="sec" id="contacts" style="padding-top:0">
+    <div class="wrap">
+      <div class="final" data-fade>
+        <div>
+          <h2 class="h2" data-split>Хотите точную смету? Вызовите специалиста</h2>
+          <p class="lead">Встреча на объекте, обсуждение и замеры — бесплатно. Санкт-Петербург и Ленинградская область.</p>
+          <div class="final-c">
+            <a href="tel:+78126421735"><svg class="ic"><use href="#i-phone"/></svg>+7 (812) 642-17-35 <small>руководитель проекта</small></a>
+            <a href="tel:+79643421735"><svg class="ic"><use href="#i-phone"/></svg>+7 (964) 342-17-35 <small>менеджер</small></a>
+            <a href="https://wa.me/79643421735" target="_blank" rel="noopener"><svg class="ic"><use href="#i-chat"/></svg>WhatsApp</a>
+            <a href="https://t.me/compozitspb" target="_blank" rel="noopener"><svg class="ic"><use href="#i-send"/></svg>Telegram</a>
+          </div>
+        </div>
+        <div class="final-f"><h3>Заявка на выезд</h3><div id="ct-form"></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr"><div class="wrap"><span>© <span data-year></span> «Композит» · Пн–Сб, 10:00–19:00 · <a href="mailto:9643421735@mail.ru">9643421735@mail.ru</a></span><span>Цены за работы без материалов, не являются публичной офертой · <a href="#" data-privacy>Политика обработки ПДн</a></span></div></footer>
+
+<nav class="mbar" aria-label="Быстрая связь">
+  <a href="tel:+78126421735"><svg class="ic" style="width:18px;height:18px"><use href="#i-phone"/></svg>Звонок</a>
+  <a href="https://wa.me/79643421735" target="_blank" rel="noopener"><svg class="ic" style="width:18px;height:18px"><use href="#i-chat"/></svg>WhatsApp</a>
+  <a class="mb-p" href="#quiz" data-goto-quiz>Рассчитать</a>
+</nav>
+
+{{LIBS}}
+<script>
+(function () {
+  var D = KZ.data, $ = KZ.$, $$ = KZ.$$, esc = KZ.esc, num = KZ.num;
+  var still = document.documentElement.classList.contains('m-static');
+  // живая сумма: плавно «докручиваем» до нового значения
+  var live = $('#live'), val = $('#val'), mk = $('#mk'), cur = [0, 0];
+  var rates = D.quiz.rates, rmin = 3400, rmax = 10800;
+  var posOf = function (r) { return 4 + (r - rmin) / (rmax - rmin) * 92; };
+  var render = function (a) { val.textContent = a.length === 2 ? num(a[0]) + ' – ' + num(a[1]) + ' ₽' : 'от ' + num(a[0]) + ' ₽'; };
+  var shown = { a: 0, b: 0 }, target = '';
+  var sync = function () {
+    var t = live.textContent, ns = (t.match(/[\d\s  ]{3,}/g) || []).map(function (s) { return +s.replace(/\D/g, ''); }).filter(Boolean);
+    if (!ns.length) { val.textContent = t; target = t; return; }
+    if (t === target) return;
+    target = t;
+    if (still || !window.gsap) { shown.a = ns[0]; shown.b = ns[1] || 0; render(ns); return; }
+    gsap.to(shown, { a: ns[0], b: ns[1] || 0, duration: 0.9, ease: 'power3.out', overwrite: true,
+      onUpdate: function () { render(ns.length === 2 ? [shown.a, shown.b] : [shown.a]); } });
+  };
+  new MutationObserver(sync).observe(live, { childList: true, characterData: true, subtree: true });
+  // маркер на шкале — по выбранному виду ремонта
+  $('#quiz-box').addEventListener('click', function (e) {
+    var o = e.target.closest('.qz-opt'); if (!o || !rates[o.dataset.v]) return;
+    var x = posOf(rates[o.dataset.v]) + '%';
+    if (window.gsap && !still) gsap.to(mk, { left: x, opacity: 1, duration: 0.9, ease: 'elastic.out(1,0.6)' }); else { mk.style.left = x; mk.style.opacity = 1; }
+  });
+  KZ.quiz($('#quiz-box'), { live: '#live' });
+  sync();
+  // районы — столбики
+  var withPhotos = {}; D.objects.forEach(function (o) { withPhotos[o.district] = 1; });
+  var max = Math.max.apply(null, D.districts.map(function (d) { return d[1]; }));
+  KZ.render($('#bars'), D.districts, function (d) {
+    var has = withPhotos[d[0]];
+    return '<button type="button" class="brow"' + (has ? ' data-has data-d="' + esc(d[0]) + '"' : ' tabindex="-1" aria-disabled="true"') + '><span>' + esc(d[0]) + '</span><span class="bt"><i style="width:' + (d[1] / max * 100) + '%"></i></span><b>' + d[1] + '</b></button>';
+  });
+  $('#bars').insertAdjacentHTML('beforeend', '<p class="bars-note">Красным — районы, по которым ниже есть фото объектов.</p>');
+  KZ.portfolio($('#pf'), { filterEl: '#pf-filters', filterBy: 'district' });
+  $('#bars').addEventListener('click', function (e) {
+    var b = e.target.closest('.brow[data-has]'); if (!b) return;
+    var f = $$('.pf-filter').filter(function (x) { return x.dataset.f === b.dataset.d; })[0];
+    if (f) { f.click(); $$('.brow').forEach(function (x) { x.classList.toggle('on', x === b); }); (window.M && M.scrollTo) ? M.scrollTo('#pf-filters') : f.scrollIntoView(); }
+  });
+  // до/после
+  var pairs = D.beforeAfter, seg = $('#seg'), short = ['Комната', 'Стена с окнами', 'Душевая', 'Санузел'];
+  KZ.render(seg, pairs, function (p, k) { return '<button type="button" data-k="' + k + '" aria-pressed="' + (k === 0) + '" title="' + esc(p.caption) + '">' + short[k] + '</button>'; });
+  seg.addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; $$('button', seg).forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); KZ.ba($('#ba'), pairs[+b.dataset.k]); $('#ba-cap').textContent = pairs[+b.dataset.k].caption; });
+  KZ.ba($('#ba'), pairs[0]); $('#ba-cap').textContent = pairs[0].caption + ' · потяните ползунок';
+  KZ.videos($('#videos'));
+  $('#vd-all').onclick = function () { var g = $('#videos'), on = g.classList.toggle('all'); this.textContent = on ? 'Свернуть' : 'Показать все 12'; if (window.ScrollTrigger) ScrollTrigger.refresh(); };
+  KZ.render($('#steps'), D.steps, function (s, k) { return '<div class="step"><span class="n">' + (k + 1) + '</span><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div>'; });
+  var half = Math.ceil(D.faq.length / 2), all = D.faq;
+  D.faq = all.slice(0, half); KZ.faq($('#faq-a')); D.faq = all.slice(half); KZ.faq($('#faq-b')); D.faq = all;
+  $('#ct-form').innerHTML = KZ.leadForm({ button: 'Вызвать специалиста' });
+  KZ.initForms($('#ct-form'));
+  // анимации: столбики растут, строки таблицы появляются
+  document.addEventListener('intro:done', function () {
+    if (!window.gsap || still) return;
+    gsap.from('#bars .bt i', { scaleX: 0, duration: 1.2, ease: 'power3.out', stagger: 0.05, scrollTrigger: { trigger: '#bars', start: 'top 80%' } });
+    gsap.from('#cmp-body tr', { x: -20, autoAlpha: 0, duration: 0.6, stagger: 0.05, scrollTrigger: { trigger: '#cmp-body', start: 'top 85%' } });
+  });
+})();
+</script>
+{{MOTION}}
+</body>
+</html>

@@ -1,0 +1,414 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ремонт квартир под ключ в СПб — «Композит» · концепт 4 «Дом»</title>
+<meta name="description" content="Ремонт квартир в новостройках, старом фонде и ремонт ванных комнат в Санкт-Петербурге и Ленобласти. Фиксированная смета, оплата по этапам, бесплатный выезд специалиста.">
+{{HEAD}}
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Alegreya+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F3ECE2; --card:#FBF7F1; --sand:#E8DCCB; --ink:#2A211C; --mute:#7B6E64; --line:#E0D3C2;
+  --red:#C8321F; --red-d:#A82816; --olive:#5D6B47; --olive-l:#E3E6D6;
+  --serif:'Alegreya',Georgia,serif; --sans:'Alegreya Sans',system-ui,sans-serif;
+  --kz-accent:var(--red); --kz-on-accent:#fff; --kz-radius:22px; --kz-font:var(--sans); --kz-head-font:var(--serif); --kz-dialog-bg:#FBF7F1;
+  --gut:clamp(16px,4vw,48px); --r:28px;
+}
+*{box-sizing:border-box}
+html{background:var(--cream)}
+body{margin:0;background:var(--cream);color:var(--ink);font:400 19px/1.55 var(--sans);-webkit-font-smoothing:antialiased}
+main{overflow-x:clip}
+img{max-width:100%;display:block}
+a{color:inherit}
+::selection{background:var(--red);color:#fff}
+.wrap{max-width:1300px;margin:0 auto;padding:0 var(--gut)}
+.sec{padding:clamp(80px,10vw,150px) 0}
+.ov{display:inline-flex;align-items:center;gap:8px;font:700 14px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--olive)}
+.ov::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
+.h2{font:700 clamp(36px,4.8vw,70px)/1.04 var(--serif);letter-spacing:-.015em;margin:16px 0 0}
+.h2 em{color:var(--red);font-style:italic;font-weight:600}
+.lead{font-size:clamp(18px,1.5vw,21px);color:var(--mute);max-width:600px;margin:18px 0 0}
+.center{text-align:center}.center .lead{margin-left:auto;margin-right:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font:800 17px/1 var(--sans);padding:19px 30px;border-radius:999px;border:0;background:var(--red);color:#fff;text-decoration:none;cursor:pointer;white-space:nowrap;transition:background .25s,box-shadow .25s;box-shadow:0 14px 30px -14px rgba(200,50,31,.7)}
+.btn:hover{background:var(--red-d)}
+.btn-s{background:var(--card);color:var(--ink);box-shadow:inset 0 0 0 2px var(--line)}
+.btn-s:hover{background:#fff;box-shadow:inset 0 0 0 2px var(--ink)}
+
+/* header */
+.hdr{position:fixed;top:14px;left:0;right:0;z-index:60;padding:0 var(--gut)}
+.hdr-in{position:relative;max-width:1300px;margin:0 auto;height:70px;display:flex;align-items:center;gap:20px;padding:0 10px 0 22px;border-radius:999px;background:rgba(251,247,241,.88);backdrop-filter:blur(12px);box-shadow:0 10px 30px -20px rgba(42,33,28,.45),0 0 0 1px var(--line)}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font:800 24px/1 var(--serif)}
+.logo img{width:32px}
+.nav{display:flex;gap:2px;margin:0 auto}
+.nav a{text-decoration:none;font:700 17px/1 var(--sans);padding:12px 16px;border-radius:999px;white-space:nowrap;transition:background .2s}
+.nav a:hover{background:var(--sand)}
+.nav .nav-tel{display:none}
+.hdr-tel{font:800 17px/1 var(--sans);text-decoration:none;white-space:nowrap}
+.hdr .btn{padding:15px 22px;font-size:16px;box-shadow:none}
+.burger{display:none;width:50px;height:50px;border-radius:50%;border:0;background:var(--ink);cursor:pointer;position:relative}
+.burger::before,.burger::after{content:"";position:absolute;left:16px;right:16px;height:2px;border-radius:2px;background:#fff;transition:.3s}
+.burger::before{top:20px}.burger::after{top:28px}
+.menu-open .burger::before{top:24px;transform:rotate(45deg)}.menu-open .burger::after{top:24px;transform:rotate(-45deg)}
+
+/* intro */
+.intro{background:var(--cream);clip-path:inset(0 0 0 0)}
+.intro-word{font:800 24px/1 var(--serif);letter-spacing:.06em}
+
+/* hero */
+.hero{padding:150px 0 clamp(70px,8vw,120px);position:relative}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(30px,5vw,80px);align-items:center}
+.hero h1{font:800 clamp(42px,5vw,80px)/1.02 var(--serif);letter-spacing:-.02em;margin:22px 0 0}
+.hero h1 .u{position:relative;display:inline-block;color:var(--red);font-style:italic;font-weight:600;white-space:nowrap}
+.hero h1 .u svg{position:absolute;left:-2%;bottom:-.12em;width:104%;height:.32em;overflow:visible}
+.hero .lead{margin-top:26px}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
+.prices{display:flex;gap:10px;flex-wrap:wrap;margin-top:34px}
+.prices span{background:var(--card);border-radius:999px;padding:10px 16px;font:700 16px/1 var(--sans);box-shadow:inset 0 0 0 1.5px var(--line)}
+.prices span b{color:var(--red)}
+.prices small{flex-basis:100%;font-size:14px;color:var(--mute)}
+.fan{position:relative;height:clamp(420px,46vw,620px)}
+.ph{position:absolute;left:50%;top:50%;width:58%;background:#fff;padding:10px 10px 44px;border-radius:6px;box-shadow:0 30px 50px -25px rgba(42,33,28,.5);cursor:zoom-in;border:0}
+.ph img{width:100%;aspect-ratio:4/4.6;object-fit:cover;border-radius:3px}
+.ph span{position:absolute;left:14px;right:14px;bottom:12px;font:600 17px/1.2 var(--serif);text-align:left;color:var(--ink)}
+.ph:nth-child(1){transform:translate(-95%,-58%) rotate(-9deg)}
+.ph:nth-child(2){transform:translate(-8%,-62%) rotate(7deg)}
+.ph:nth-child(3){transform:translate(-62%,-34%) rotate(-2deg)}
+.ph:nth-child(4){transform:translate(-20%,-30%) rotate(4deg);width:46%}
+.sticker{position:absolute;right:2%;bottom:6%;z-index:5;width:150px;height:150px;border-radius:50%;background:var(--red);color:#fff;display:flex;align-items:center;justify-content:center;text-align:center;font:700 16px/1.15 var(--serif);padding:18px;transform:rotate(-10deg);box-shadow:0 20px 40px -20px rgba(200,50,31,.8)}
+
+/* situations tabs */
+.tabs{display:inline-flex;gap:6px;background:var(--card);padding:6px;border-radius:999px;box-shadow:inset 0 0 0 1.5px var(--line);margin-top:34px;flex-wrap:wrap;justify-content:center}
+.tab{font:800 17px/1 var(--sans);padding:14px 22px;border-radius:999px;border:0;background:transparent;cursor:pointer;color:var(--mute);transition:.3s}
+.tab[aria-selected=true]{background:var(--ink);color:#fff}
+.sit{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(24px,5vw,72px);align-items:center;margin-top:44px;background:var(--card);border-radius:36px;padding:clamp(18px,2.4vw,30px);box-shadow:0 0 0 1px var(--line)}
+.sit-imgs{display:grid;grid-template-columns:1.3fr 1fr;grid-template-rows:1fr 1fr;gap:10px;height:clamp(320px,36vw,480px)}
+.sit-imgs img{width:100%;height:100%;object-fit:cover;border-radius:22px}
+.sit-imgs img:first-child{grid-row:span 2}
+.sit-b h3{font:700 clamp(30px,3vw,44px)/1.1 var(--serif);margin:0 0 12px}
+.sit-b p{color:var(--mute);margin:0 0 20px}
+.sit-b ul{list-style:none;padding:0;margin:0 0 28px;display:grid;gap:10px}
+.sit-b li{display:flex;gap:12px;align-items:flex-start}
+.sit-b li::before{content:"";flex:none;width:24px;height:24px;border-radius:50%;margin-top:2px;background:var(--olive-l) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235D6B47' stroke-width='3'%3E%3Cpath d='M6 12l4 4 8-8'/%3E%3C/svg%3E") center/13px no-repeat}
+
+/* quiz */
+.qbox{display:grid;grid-template-columns:.9fr 1.1fr;gap:0;background:var(--ink);color:#fff;border-radius:40px;overflow:hidden}
+.qbox-l{padding:clamp(28px,4vw,60px);display:flex;flex-direction:column}
+.qbox-l .ov{color:#C9CFB6}
+.qbox-l .h2{color:#fff}
+.live{margin-top:auto;padding-top:34px}
+.live small{font:700 14px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+.live output{display:block;font:800 clamp(38px,4vw,62px)/1.05 var(--serif);margin:12px 0 10px;color:#fff}
+.live p{margin:0;color:rgba(255,255,255,.6);font-size:16px;max-width:380px}
+.qbox-r{background:var(--card);color:var(--ink);margin:12px;border-radius:30px;padding:clamp(22px,3vw,44px)}
+#quiz-box{min-height:470px}
+.qz-q{font:700 clamp(26px,2.4vw,34px)/1.15 var(--serif)}
+.qz-opt{background:var(--cream);border-color:transparent;border-radius:20px;padding:18px 20px}
+.qz-opt[aria-pressed=true]{background:#F6DDD5;border-color:var(--red)}
+.qz-opt-l{font-size:18px}
+.qz-next,.lf-submit{border-radius:999px;padding:16px 28px}
+.qz-sum{font:800 clamp(34px,4vw,52px)/1.05 var(--serif);color:var(--red)}
+.qz-range-val{font:800 44px/1 var(--serif)}
+.lf-input{border-radius:16px;background:#fff}
+.ld-title{font:700 26px/1.2 var(--serif)}
+
+/* faces marquee */
+.faces{padding:clamp(80px,10vw,150px) 0 clamp(60px,7vw,100px)}
+.fm{margin-top:44px;display:grid;gap:18px}
+.fm .mq-track{gap:18px}
+.fm .vd-card{width:clamp(240px,24vw,340px);flex:none}
+.vd-thumb{border-radius:24px}
+.vd-play{background:#fff;width:62px;height:62px;margin:-31px 0 0 -31px}
+.vd-play::after{left:25px;top:20px;border-left-color:var(--red)}
+.vd-title{display:block;margin-top:10px;font:600 17px/1.3 var(--serif);white-space:normal}
+.fm-note{text-align:center;margin-top:26px;color:var(--mute)}
+
+/* portfolio masonry */
+.mas{columns:3;column-gap:22px;margin-top:44px}
+.mc{break-inside:avoid;margin-bottom:22px;background:var(--card);border-radius:var(--r);padding:8px;box-shadow:0 0 0 1px var(--line);transform-style:preserve-3d;transition:box-shadow .3s}
+.mc:hover{box-shadow:0 30px 50px -30px rgba(42,33,28,.45),0 0 0 1px var(--line)}
+.mc button{display:block;width:100%;border:0;padding:0;background:none;cursor:zoom-in;border-radius:22px;overflow:hidden}
+.mc img{width:100%;height:auto;border-radius:22px;transition:transform .8s cubic-bezier(.2,.7,.2,1)}
+.mc:hover img{transform:scale(1.04)}
+.mc-b{padding:14px 12px 10px}
+.mc-t{display:flex;gap:8px;flex-wrap:wrap}
+.mc-t span{font:700 13px/1 var(--sans);padding:6px 10px;border-radius:999px;background:var(--cream)}
+.mc-t span:first-child{background:var(--olive-l);color:var(--olive)}
+.mc h3{font:700 22px/1.2 var(--serif);margin:10px 0 4px}
+.mc p{margin:0;color:var(--mute);font-size:16px}
+
+/* timeline */
+.tlv{position:relative;max-width:860px;margin:50px auto 0}
+.tlv-line{position:absolute;left:31px;top:10px;bottom:10px;width:3px;background:var(--sand);border-radius:3px}
+.tlv-line i{position:absolute;inset:0;background:var(--red);border-radius:3px;transform-origin:top;transform:scaleY(0)}
+.tlv-step{display:grid;grid-template-columns:66px 1fr;gap:22px;padding:18px 0}
+.tlv-step .d{width:66px;height:66px;border-radius:50%;background:var(--card);box-shadow:inset 0 0 0 3px var(--sand);display:flex;align-items:center;justify-content:center;font:800 24px/1 var(--serif);color:var(--mute);position:relative;z-index:1;transition:.4s}
+.tlv-step.on .d{background:var(--red);color:#fff;box-shadow:none}
+.tlv-step h3{font:700 26px/1.2 var(--serif);margin:12px 0 4px}
+.tlv-step p{margin:0;color:var(--mute)}
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:70px}
+.why div{background:var(--card);border-radius:24px;padding:26px;box-shadow:0 0 0 1px var(--line)}
+.why h3{font:700 23px/1.2 var(--serif);margin:0 0 8px}
+.why p{margin:0;color:var(--mute);font-size:17px}
+
+/* faq */
+.faq-list{display:grid;gap:12px;max-width:900px;margin:44px auto 0}
+.faq-item{background:var(--card);border-radius:22px;padding:0 26px;box-shadow:0 0 0 1px var(--line);transition:box-shadow .3s}
+.faq-item[open]{box-shadow:0 0 0 2px var(--ink)}
+.faq-q{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font:700 21px/1.3 var(--serif)}
+.faq-icon{flex:none;width:38px;height:38px;border-radius:50%;background:var(--cream);position:relative;transition:.3s}
+.faq-icon::before{content:"";position:absolute;left:14px;top:11px;width:9px;height:9px;border-right:2.5px solid var(--ink);border-bottom:2.5px solid var(--ink);transform:rotate(45deg);transition:.3s}
+.faq-item[open] .faq-icon{background:var(--red)}
+.faq-item[open] .faq-icon::before{border-color:#fff;transform:rotate(225deg);top:16px}
+.faq-a p{margin:0 0 22px;color:var(--mute)}
+
+/* contact */
+.ct{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--card);border-radius:44px;overflow:hidden;box-shadow:0 0 0 1px var(--line)}
+.ct-img{position:relative;min-height:520px;overflow:hidden}
+.ct-img img{position:absolute;left:0;top:-10%;width:100%;height:120%;object-fit:cover}
+.ct-img .note{position:absolute;left:22px;right:22px;bottom:22px;background:rgba(251,247,241,.94);border-radius:22px;padding:18px 20px;font-size:16px}
+.ct-img .note b{display:block;font:700 22px/1.2 var(--serif)}
+.ct-b{padding:clamp(28px,4vw,56px)}
+.ct-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:26px 0 26px}
+.ct-btns a{display:flex;flex-direction:column;gap:4px;text-decoration:none;background:var(--cream);border-radius:20px;padding:15px 18px;font-weight:800;transition:background .2s}
+.ct-btns a:hover{background:var(--sand)}
+.ct-btns small{font-weight:500;color:var(--mute);font-size:14px}
+.ftr{text-align:center;padding:36px 0 120px;color:var(--mute);font-size:15px}
+.ftr a{text-decoration:none}
+.mbar{display:none}
+
+@media (max-width:1100px){
+  .nav,.hdr .btn{display:none}
+  .hdr-tel{margin-left:auto}
+  .burger{display:block}
+  .menu-open .hdr-in{border-radius:30px 30px 0 0;background:var(--card)}
+  .menu-open .nav{display:flex;flex-direction:column;position:absolute;top:calc(100% - 1px);left:0;right:0;background:var(--card);border-radius:0 0 30px 30px;padding:8px 14px 22px;margin:0;box-shadow:0 30px 40px -30px rgba(42,33,28,.5),0 1px 0 1px var(--line)}
+  .menu-open .nav a{font:700 26px/1 var(--serif);padding:16px 12px}
+  .menu-open .nav .nav-tel{display:block;color:var(--red);font-family:var(--sans);font-weight:800}
+  .mas{columns:2}
+}
+@media (max-width:900px){
+  .hdr{top:8px}
+  .hdr-in{height:62px}
+  .hero{padding-top:110px}
+  .hero-grid,.sit,.qbox,.ct{grid-template-columns:1fr}
+  .fan{height:440px;max-width:520px;margin:0 auto;width:100%}
+  .sticker{width:120px;height:120px;font-size:14px}
+  .why{grid-template-columns:1fr}
+  .ct-img{min-height:300px}
+  .mbar{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:6px;position:fixed;left:10px;right:10px;bottom:10px;z-index:80;background:rgba(251,247,241,.96);backdrop-filter:blur(10px);border-radius:999px;padding:6px;box-shadow:0 10px 30px -10px rgba(42,33,28,.4),0 0 0 1px var(--line)}
+  .mbar a{display:flex;align-items:center;justify-content:center;height:48px;border-radius:999px;text-decoration:none;font:800 15px var(--sans);background:var(--cream)}
+  .mbar a.mb-p{background:var(--red);color:#fff}
+}
+@media (max-width:600px){
+  .hdr-tel{display:none}
+  .burger{margin-left:auto}
+  .hero h1{font-size:clamp(40px,11.5vw,54px)}
+  .hero-cta .btn{width:100%}
+  .fan{height:380px}
+  .ph{width:64%}
+  .tabs{display:flex;border-radius:24px}
+  .tab{flex:1;padding:12px 10px;font-size:15px}
+  .sit-imgs{height:300px}
+  .mas{columns:1}
+  .qz-opts{grid-template-columns:1fr}
+  #quiz-box{min-height:0}
+  .ct-btns{grid-template-columns:1fr}
+  .tlv-step{grid-template-columns:50px 1fr;gap:14px}
+  .tlv-step .d{width:50px;height:50px;font-size:20px}
+  .tlv-line{left:23.5px}
+}
+</style>
+</head>
+<body data-variant="4">
+
+<div class="intro" data-intro aria-hidden="true">{{LOGO}}<div class="intro-word"><span>К</span><span>о</span><span>м</span><span>п</span><span>о</span><span>з</span><span>и</span><span>т</span></div></div>
+
+<header class="hdr" data-header>
+  <div class="hdr-in">
+    <a class="logo" href="#top"><img src="assets/logo-mark.svg" alt="">Композит</a>
+    <nav class="nav" data-menu aria-label="Основное меню">
+      <a href="#situations">Услуги</a><a href="#works">Объекты</a><a href="#faces">Отзывы</a><a href="#quiz">Расчёт</a><a href="#faq">Вопросы</a>
+      <a class="nav-tel" href="tel:+78126421735">+7 (812) 642-17-35</a>
+    </nav>
+    <a class="hdr-tel" href="tel:+78126421735">+7 (812) 642-17-35</a>
+    <a class="btn" href="#quiz" data-goto-quiz data-magnetic>Рассчитать</a>
+    <button class="burger" data-menu-toggle aria-label="Меню" aria-expanded="false"></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" data-hero>
+    <div class="wrap hero-grid">
+      <div>
+        <span class="ov" data-fade>Санкт-Петербург и Ленобласть</span>
+        <h1 data-split="lines">Ремонт квартир под&nbsp;ключ, в&nbsp;которых <span class="u">хочется жить<svg viewBox="0 0 300 20" preserveAspectRatio="none" aria-hidden="true"><path id="ul" d="M3 13 C 60 4, 120 3, 170 9 S 260 18, 297 6" stroke="#C8321F" stroke-width="5" stroke-linecap="round" fill="none"/></svg></span></h1>
+        <p class="lead" data-fade>Капитальный, косметический и дизайнерский ремонт. Смета не меняется до конца работ, а каждый этап вы принимаете и оплачиваете отдельно.</p>
+        <div class="hero-cta" data-fade>
+          <a class="btn" href="#quiz" data-goto-quiz data-magnetic>Рассчитать стоимость</a>
+          <button class="btn btn-s" data-open-lead>Вызвать специалиста</button>
+        </div>
+        <div class="prices" data-fade><span>Косметический <b>от 3 400 ₽/м²</b></span><span>Капитальный <b>от 7 900 ₽/м²</b></span><span>Дизайнерский <b>от 10 800 ₽/м²</b></span><small>Цены за работы, без материалов. Выезд и смета — бесплатно.</small></div>
+      </div>
+      <div class="fan" id="fan">
+        <button class="ph" data-gallery="lavriki"><img src="img/lv-living-sm.jpg" alt="Гостиная в Мурино"><span>Мурино</span></button>
+        <button class="ph" data-gallery="zhdanovskaya"><img src="img/zh-dining-sm.jpg" alt="Кухня-гостиная на Ждановской"><span>Ждановская</span></button>
+        <button class="ph" data-gallery="fontanka"><img src="img/fo-after-sm.jpg" alt="Студия на Фонтанке"><span>Фонтанка, дом 1846 г.</span></button>
+        <button class="ph" data-gallery="sofia"><img src="img/so-shower-sm.jpg" alt="Душевая в ЖК «София»"><span>ЖК «София»</span></button>
+        <div class="sticker">12 видео&shy;отзывов клиентов</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="situations" style="padding-top:0">
+    <div class="wrap center">
+      <span class="ov" data-fade>С чем вы пришли</span>
+      <h2 class="h2" data-split>Расскажите, <em>где ремонт</em> — покажем похожие объекты</h2>
+      <div class="tabs" role="tablist" id="tabs"></div>
+      <div class="sit" id="sit" style="text-align:left"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="quiz" style="padding-top:0">
+    <div class="wrap">
+      <div class="qbox">
+        <div class="qbox-l">
+          <span class="ov">Калькулятор</span>
+          <h2 class="h2" data-split>Посчитаем ваш ремонт за&nbsp;минуту</h2>
+          <div class="live" aria-live="polite"><small>Ориентировочно · <span data-qz-live-area>45 м²</span></small><output id="live">—</output><p>Цены за м² работ, без материалов. Точную смету составим бесплатно после выезда специалиста.</p></div>
+        </div>
+        <div class="qbox-r"><div id="quiz-box"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="faces" id="faces">
+    <div class="wrap center"><span class="ov" data-fade>Видеоотзывы</span><h2 class="h2" data-split>Наши клиенты <em>рассказывают сами</em></h2></div>
+    <div class="fm">
+      <div data-marquee data-duration="70"><div class="mq-track" id="fm1"></div></div>
+      <div data-marquee="right" data-duration="80"><div class="mq-track" id="fm2"></div></div>
+    </div>
+    <p class="fm-note">12 видео — квартиры, ванные и даже трёхэтажный таунхаус. Нажмите, чтобы посмотреть.</p>
+  </section>
+
+  <section class="sec" id="works" style="padding-top:0">
+    <div class="wrap">
+      <div class="center"><span class="ov" data-fade>Портфолио</span><h2 class="h2" data-split>Объекты <em>с адресами</em></h2><p class="lead" data-fade>Реальные квартиры в Петербурге и Ленобласти: тип дома, что сделали и чей был проект.</p></div>
+      <div class="mas" id="mas"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="how" style="padding-top:0">
+    <div class="wrap">
+      <div class="center"><span class="ov" data-fade>Как мы работаем</span><h2 class="h2" data-split>Спокойно, <em>по&nbsp;договору</em> и&nbsp;по&nbsp;этапам</h2></div>
+      <div class="tlv" id="tlv"><div class="tlv-line"><i id="tlv-fill"></i></div><div id="tlv-steps"></div></div>
+      <div class="why" id="why" data-stagger></div>
+    </div>
+  </section>
+
+  <section class="sec" id="faq" style="padding-top:0">
+    <div class="wrap">
+      <div class="center"><span class="ov" data-fade>Вопросы</span><h2 class="h2" data-split>Частые <em>вопросы</em></h2></div>
+      <div class="faq-list" id="faq-list"></div>
+    </div>
+  </section>
+
+  <section class="sec" id="contacts" style="padding-top:0">
+    <div class="wrap">
+      <div class="ct">
+        <div class="ct-img"><img src="img/fo-window.jpg" alt="Вид на Фонтанку из студии после ремонта" data-speed="0.2" loading="lazy"><div class="note"><b>Приедем, посмотрим и посчитаем</b>Встреча на объекте, пожелания и замеры — бесплатно</div></div>
+        <div class="ct-b">
+          <span class="ov">Контакты</span>
+          <h2 class="h2" data-split>Вызовите специалиста — <em>бесплатно</em></h2>
+          <div class="ct-btns">
+            <a href="tel:+78126421735">+7 (812) 642-17-35<small>руководитель проекта</small></a>
+            <a href="tel:+79643421735">+7 (964) 342-17-35<small>менеджер</small></a>
+            <a href="https://wa.me/79643421735" target="_blank" rel="noopener">WhatsApp<small>написать</small></a>
+            <a href="https://t.me/compozitspb" target="_blank" rel="noopener">Telegram<small>@compozitspb</small></a>
+          </div>
+          <div id="ct-form"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr"><div class="wrap">© <span data-year></span> «Композит» — ремонт помещений под ключ в Санкт-Петербурге и Ленинградской области · Пн–Сб, 10:00–19:00<br>Цены за работы без учёта материалов, не являются публичной офертой · <a href="#" data-privacy>Политика обработки персональных данных</a> · <a href="https://vk.com/kompozitspb" target="_blank" rel="noopener">ВКонтакте</a> · <a href="https://www.youtube.com/channel/UCPDpoQf3VmOYyaY1EADkEBw" target="_blank" rel="noopener">YouTube</a></div></footer>
+
+<nav class="mbar" aria-label="Быстрая связь"><a href="tel:+78126421735">Позвонить</a><a href="https://wa.me/79643421735" target="_blank" rel="noopener">WhatsApp</a><a class="mb-p" href="#quiz" data-goto-quiz>Рассчитать</a></nav>
+
+{{LIBS}}
+<script>
+(function () {
+  var D = KZ.data, $ = KZ.$, $$ = KZ.$$, esc = KZ.esc;
+  // ситуации
+  var S = [
+    { k: 'new', tab: 'Новостройка', t: 'Квартира в новостройке', imgs: ['lv-kitchen', 'go-living', 'lv-bath'], g: 'lavriki',
+      d: 'Мурино, Кудрово, ЖК «Медалист», «Малая Охта», «Четыре горизонта», «Ладожский парк».',
+      li: ['Косметический или капитальный ремонт', 'Ремонт санузла и душевой с перепланировкой', 'По вашему дизайн-проекту или нашему'], btn: 'Смотреть объект в Мурино' },
+    { k: 'old', tab: 'Старый фонд', t: 'Старый фонд и вторичка', imgs: ['fo-after', 'fo-before', 'bo-bath'], g: 'fontanka',
+      d: 'Дом 1846 года на Фонтанке, сталинка на Боткинской, хрущёвка на Софьи Ковалевской.',
+      li: ['Демонтаж и полная перепланировка', 'Замена электрики, труб и стояков', 'Выравнивание стен и полов, стяжка'], btn: 'Смотреть студию на Фонтанке' },
+    { k: 'bath', tab: 'Ванная', t: 'Ванная и санузел', imgs: ['so-shower', 'ko-shower', 'so-manifold'], g: 'sofia',
+      d: 'Больше 20 адресов в портфолио: новостройки, хрущёвки, сталинки, частные дома.',
+      li: ['Разводка сантехники и инсталляции', 'Гидроизоляция и укладка плитки', 'Душевая вместо ванной, если места мало'], btn: 'Смотреть душевую в ЖК «София»' }
+  ];
+  $('#tabs').innerHTML = S.map(function (s, k) { return '<button type="button" role="tab" class="tab" data-k="' + k + '" aria-selected="' + (k === 0) + '">' + s.tab + '</button>'; }).join('');
+  var drawSit = function (k, anim) {
+    var s = S[k], box = $('#sit');
+    var html = '<div class="sit-imgs">' + s.imgs.map(function (n, i) { return '<img src="' + KZ.img(n, i > 0) + '" alt="" loading="lazy">'; }).join('') + '</div>' +
+      '<div class="sit-b"><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p><ul>' + s.li.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ul><button class="btn btn-s" data-gallery="' + s.g + '">' + esc(s.btn) + '</button></div>';
+    if (anim && window.gsap && !(window.M && M.reduce)) {
+      gsap.to(box.children, { autoAlpha: 0, y: 14, duration: 0.25, onComplete: function () {
+        box.innerHTML = html;
+        gsap.from(box.querySelectorAll('.sit-imgs img'), { clipPath: 'inset(0 0 100% 0)', duration: 0.8, ease: 'expo.out', stagger: 0.07 });
+        gsap.from(box.querySelectorAll('.sit-b > *'), { y: 20, autoAlpha: 0, duration: 0.6, stagger: 0.05 });
+      } });
+    } else box.innerHTML = html;
+  };
+  drawSit(0);
+  $('#tabs').addEventListener('click', function (e) { var b = e.target.closest('.tab'); if (!b || b.getAttribute('aria-selected') === 'true') return; $$('.tab').forEach(function (x) { x.setAttribute('aria-selected', x === b); }); drawSit(+b.dataset.k, true); });
+  KZ.quiz($('#quiz-box'), { live: '#live' });
+  // лица клиентов — две ленты
+  KZ.render($('#fm1'), D.videos.slice(0, 6), KZ.videoTpl);
+  KZ.render($('#fm2'), D.videos.slice(6), KZ.videoTpl);
+  // мозаика объектов
+  KZ.render($('#mas'), D.objects, function (o) {
+    return '<article class="mc" data-fade><button type="button" data-gallery="' + o.id + '" aria-label="Фото: ' + esc(o.title) + '"><img src="' + KZ.img(o.imgs[0], true) + '" alt="' + esc(o.title) + '" loading="lazy"></button>' +
+      '<div class="mc-b"><div class="mc-t"><span>' + esc(o.typeLabel) + '</span><span>' + esc(o.district) + '</span></div><h3>' + esc(o.title) + '</h3><p>' + esc(o.place) + ' · ' + esc(o.house) + '</p></div></article>';
+  });
+  // шаги
+  KZ.render($('#tlv-steps'), D.steps, function (s, k) { return '<div class="tlv-step"><span class="d">' + (k + 1) + '</span><div><h3>' + esc(s.t) + '</h3><p>' + esc(s.d) + '</p></div></div>'; });
+  KZ.render($('#why'), D.reasons.slice(0, 3), function (r) { return '<div><h3>' + esc(r.t) + '</h3><p>' + esc(r.d) + '</p></div>'; });
+  KZ.faq($('#faq-list'), { single: true });
+  $('#ct-form').innerHTML = KZ.leadForm({ button: 'Вызвать специалиста' });
+  KZ.initForms($('#ct-form'));
+
+  var still = window.M ? M.reduce : document.documentElement.classList.contains('m-static');
+  if (still) { $$('.tlv-step').forEach(function (s) { s.classList.add('on'); }); $('#tlv-fill').style.transform = 'scaleY(1)'; return; }
+  document.addEventListener('intro:done', function () {
+    if (!window.gsap) return;
+    // веер фото
+    var cards = $$('#fan .ph');
+    gsap.from(cards, { y: 160, rotation: 0, autoAlpha: 0, duration: 1.2, ease: 'expo.out', stagger: 0.1 });
+    gsap.from('.sticker', { scale: 0, rotation: -60, duration: 1, ease: 'back.out(2)', delay: 0.6 });
+    // линия под словами
+    var ul = document.getElementById('ul'), L = ul.getTotalLength();
+    gsap.fromTo(ul, { strokeDasharray: L, strokeDashoffset: L }, { strokeDashoffset: 0, duration: 1.2, delay: 0.7, ease: 'power2.inOut' });
+    // фото следуют за мышью
+    var fan = $('#fan');
+    if (matchMedia('(hover: hover)').matches) {
+      var qs = cards.map(function (c, i) { var f = (i + 1) * 6; return { x: gsap.quickTo(c, 'x', { duration: 0.8 }), y: gsap.quickTo(c, 'y', { duration: 0.8 }), f: f }; });
+      fan.addEventListener('mousemove', function (e) { var r = fan.getBoundingClientRect(), dx = (e.clientX - r.left) / r.width - 0.5, dy = (e.clientY - r.top) / r.height - 0.5; qs.forEach(function (q) { q.x(dx * q.f * 3); q.y(dy * q.f * 2); }); });
+      fan.addEventListener('mouseleave', function () { qs.forEach(function (q) { q.x(0); q.y(0); }); });
+    }
+    // линия этапов
+    gsap.to('#tlv-fill', { scaleY: 1, ease: 'none', scrollTrigger: { trigger: '#tlv', start: 'top 70%', end: 'bottom 60%', scrub: 0.5 } });
+    $$('.tlv-step').forEach(function (s) { ScrollTrigger.create({ trigger: s, start: 'top 65%', onEnter: function () { s.classList.add('on'); }, onLeaveBack: function () { s.classList.remove('on'); } }); });
+  });
+})();
+</script>
+{{MOTION}}
+</body>
+</html>
