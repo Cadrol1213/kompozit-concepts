@@ -576,7 +576,7 @@
     var vr = document.body.dataset.variant;
     if (vr) {
       var b = document.createElement('a'); b.className = 'kz-badge'; b.href = 'index.html';
-      b.innerHTML = 'Концепт ' + vr + ' из 5 <span>· все варианты</span>'; document.body.appendChild(b);
+      b.innerHTML = 'Концепт ' + vr + ' из 6 <span>· все варианты</span>'; document.body.appendChild(b);
     }
   }
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();

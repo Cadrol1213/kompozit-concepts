@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Цены на ремонт квартир в СПб — без звёздочек · «Композит»</title>
+<meta name="description" content="Реальные цены на ремонт квартир и санузлов в Санкт-Петербурге: санузел под ключ от 250 000 ₽, капитальный ремонт от 7 900 ₽/м², по дизайн-проекту от 10 800 ₽/м². Прайс на отдельные работы. Смета не меняется до конца ремонта.">
+{{INC:c6-head}}
+</head>
+<body data-variant="6">
+{{INC:c6-hdr}}
+
+<main id="top">
+  <section class="page-h">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Вы здесь"><a href="v6-chestno.html">Главная</a><span aria-hidden="true">/</span><span>Цены</span></nav>
+      <h1>Цены <span class="r">без звёздочек</span></h1>
+      <p class="p">Здесь — реальные цены на&nbsp;наши работы. Без мелкого шрифта и&nbsp;без сюрпризов в&nbsp;конце: смету после замера фиксируем, и&nbsp;до&nbsp;сдачи объекта она не&nbsp;меняется.</p>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><p class="lbl"><b>(01)</b> Форматы ремонта</p><h2 class="h2">Сколько стоит</h2></div>
+        <p class="p">Цены — за&nbsp;работы, без материалов. Черновые материалы закупаем в&nbsp;строймаркетах города с&nbsp;дополнительной скидкой для&nbsp;вас.</p>
+      </div>
+      <div class="fmt" id="fmt" data-reveal></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><p class="lbl"><b>(02)</b> На примерах</p><h2 class="h2">Что выходит <i>на&nbsp;деле</i></h2></div>
+        <p class="p">Посчитали по&nbsp;нашим ставкам за&nbsp;м². Точная сумма — в&nbsp;смете после бесплатного замера.</p>
+      </div>
+      <div class="ex" id="ex" data-reveal></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><p class="lbl"><b>(03)</b> Прайс 2026</p><h2 class="h2">Отдельные работы</h2></div>
+        <p class="p">Выборка из&nbsp;прайса. Полный список — в&nbsp;смете, по&nbsp;каждой позиции.</p>
+      </div>
+      <div class="pl-groups" id="pl" data-reveal></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><p class="lbl"><b>(04)</b> Порядок</p><h2 class="h2">Как мы считаем</h2></div>
+      </div>
+      <ol class="steps" id="steps" data-reveal></ol>
+    </div>
+  </section>
+
+  <section class="sec" id="faq">
+    <div class="wrap faq-grid">
+      <div data-reveal><p class="lbl"><b>(05)</b> Вопросы</p><h2 class="h2">Коротко о&nbsp;деньгах</h2><p class="p" style="margin-top:20px">Не нашли ответ — позвоните, руководитель проекта всё объяснит.</p></div>
+      <div id="faq-list" data-reveal></div>
+    </div>
+  </section>
+
+{{INC:c6-fin}}
+<script>
+(function () {
+  var D = KZ.data, esc = KZ.esc, num = KZ.num;
+  var li = function (i) { return '<li>' + esc(i) + '</li>'; };
+  // санузел — отдельной строкой: цена со слов заказчика, состав — позиции из прайса
+  var bath = { name: 'Санузел под ключ', lead: 'Ванная, туалет или душевая — отдельно от квартиры', price: 'от 250 000 ₽', unit: 'за санузел, работы',
+    items: ['Демонтаж старой плитки', 'Разводка воды и канализации', 'Гидроизоляция в 2 слоя', 'Плитка на стены и пол', 'Инсталляция, смесители', 'Тёплый пол'] };
+  var rows = [bath].concat(D.packages.map(function (p) {
+    return { name: p.name, lead: p.lead, price: 'от ' + num(p.rate) + ' ₽', unit: 'за м², работы', items: p.items, hot: p.featured };
+  }));
+  KZ.render(KZ.$('#fmt'), rows, function (r) {
+    return '<div class="fmt-row' + (r.hot ? ' hot' : '') + '"><div><h3>' + esc(r.name) + '</h3><p>' + esc(r.lead) + '</p></div>' +
+      '<ul>' + r.items.map(li).join('') + '</ul><div class="pr"><b>' + r.price + '</b><small>' + r.unit + '</small></div></div>';
+  });
+  // примеры — простое умножение ставки на площадь
+  var r = D.quiz.rates;
+  var ex = [
+    { k: 'Санузел', t: 'Ванная или душевая под ключ', sum: 'от 250 000 ₽', note: 'работы, без сантехники и плитки' },
+    { k: 'Однокомнатная · 40 м²', t: 'Капитальный ремонт', sum: 'от ' + num(r.capital * 40) + ' ₽', note: '40 м² × ' + num(r.capital) + ' ₽, без материалов' },
+    { k: 'Двухкомнатная · 60 м²', t: 'Ремонт по дизайн-проекту', sum: 'от ' + num(r.design * 60) + ' ₽', note: '60 м² × ' + num(r.design) + ' ₽, без материалов' }
+  ];
+  KZ.render(KZ.$('#ex'), ex, function (e) {
+    return '<article><span class="k">' + esc(e.k) + '</span><h3>' + esc(e.t) + '</h3><div class="sum">' + e.sum + '<small>' + esc(e.note) + '</small></div></article>';
+  });
+  // прайс по группам
+  var groups = [];
+  D.priceItems.forEach(function (p) { var g = groups.filter(function (x) { return x.g === p.g; })[0]; if (!g) groups.push(g = { g: p.g, items: [] }); g.items.push(p); });
+  KZ.render(KZ.$('#pl'), groups, function (g) {
+    return '<div class="pl-g"><h3>' + esc(g.g) + '</h3><table>' + g.items.map(function (p) {
+      return '<tr><td>' + esc(p.n) + '</td><td>' + (p.from ? 'от ' : '') + num(p.p) + ' ₽ <small>/ ' + esc(p.u) + '</small></td></tr>';
+    }).join('') + '</table></div>';
+  });
+  // первый шаг в этом концепте — цена по телефону, до выезда
+  var steps = D.steps.slice(); steps[0] = { t: 'Звонок', d: 'Рассказываете о квартире и задачах — сразу называем ориентир по цене.' };
+  KZ.render(KZ.$('#steps'), steps, function (s) { return '<li><b>' + esc(s.t) + '</b><span>' + esc(s.d) + '</span></li>'; });
+  KZ.faq(KZ.$('#faq-list'), { single: true });
+})();
+</script>
+</body>
+</html>

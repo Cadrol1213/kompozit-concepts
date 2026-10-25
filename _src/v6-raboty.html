@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Наши работы — ремонт квартир в СПб с адресами · «Композит»</title>
+<meta name="description" content="Квартиры и санузлы, которые «Композит» отремонтировал в Санкт-Петербурге и Ленобласти: улица, дом, год постройки, фото. Капитальный и косметический ремонт, ванные комнаты.">
+{{INC:c6-head}}
+</head>
+<body data-variant="6">
+{{INC:c6-hdr}}
+
+<main id="top">
+  <section class="page-h">
+    <div class="wrap">
+      <nav class="crumbs" aria-label="Вы здесь"><a href="v6-chestno.html">Главная</a><span aria-hidden="true">/</span><span>Работы</span></nav>
+      <h1>Работы <span class="r">с&nbsp;адресами</span></h1>
+      <p class="p">Не&nbsp;рендеры и&nbsp;не&nbsp;«проекты мечты» — квартиры, которые мы&nbsp;сделали в&nbsp;Петербурге и&nbsp;области. Улица, дом, год постройки. Номера квартир не&nbsp;публикуем.</p>
+    </div>
+  </section>
+
+  <section class="sec" style="padding-top:clamp(40px,5vw,64px)">
+    <div class="wrap">
+      <div class="pf-filters" id="pf-f" style="margin-bottom:32px"></div>
+      <div class="pf-grid" id="pf" data-reveal></div>
+    </div>
+  </section>
+
+  <section class="sec">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <div><p class="lbl"><b>(02)</b> Снимки с одной точки</p><h2 class="h2">В процессе — <i>и&nbsp;готово</i></h2></div>
+        <p class="p">То, что потом спрячется под&nbsp;плиткой и&nbsp;штукатуркой, мы&nbsp;тоже фотографируем. Тяните ползунок.</p>
+      </div>
+      <div class="bap" data-reveal><div class="ba" id="ba"></div></div>
+      <div class="ba-sw" id="ba-sw"></div>
+    </div>
+  </section>
+
+{{INC:c6-fin}}
+<script>
+(function () {
+  var D = KZ.data, esc = KZ.esc;
+  KZ.portfolio(KZ.$('#pf'), { filterEl: '#pf-f' });
+  var pairs = D.beforeAfter, sw = KZ.$('#ba-sw');
+  KZ.render(sw, pairs, function (p, k) { return '<button type="button" data-k="' + k + '" aria-pressed="' + (k === 0) + '">' + esc(p.caption) + '</button>'; });
+  sw.addEventListener('click', function (e) {
+    var b = e.target.closest('button'); if (!b) return;
+    KZ.$$('button', sw).forEach(function (x) { x.setAttribute('aria-pressed', x === b); });
+    KZ.ba(KZ.$('#ba'), pairs[+b.dataset.k]);
+  });
+  KZ.ba(KZ.$('#ba'), pairs[0]);
+})();
+</script>
+</body>
+</html>

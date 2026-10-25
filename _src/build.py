@@ -25,6 +25,8 @@ for name in files:
     t = (SRC / name).read_text(encoding="utf-8")
     t = t.replace("{{HEAD}}", HEAD).replace("{{LIBS}}", LIBS).replace("{{MOTION}}", MOTION)
     t = t.replace("{{LOGO}}", LOGO).replace("{{LOGO_LIGHT}}", LOGO_L)
+    # общие куски разметки: {{INC:имя}} → _src/inc/имя.html
+    t = re.sub(r"\{\{INC:([\w-]+)\}\}", lambda m: (SRC / "inc" / (m.group(1) + ".html")).read_text(encoding="utf-8").rstrip("\n"), t)
     left = re.findall(r"\{\{[A-Z_]+\}\}", t)
     assert not left, (name, left)
     (OUT / name).write_text(t, encoding="utf-8")

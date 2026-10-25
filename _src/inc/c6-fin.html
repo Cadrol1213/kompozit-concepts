@@ -1,0 +1,40 @@
+<section class="fin" id="contacts">
+  <div class="fin-bars" aria-hidden="true"><span class="bar"></span><span class="bar"></span></div>
+  <div class="wrap fin-grid">
+    <div>
+      <p class="lbl"><b>—</b> Контакты</p>
+      <h2 class="h2">Позвоните — назовём цену сразу</h2>
+      <p class="p">Расскажите, что за&nbsp;квартира и&nbsp;что хотите сделать. Руководитель проекта назовёт ориентир по&nbsp;цене. Подходит — приедем на&nbsp;бесплатный замер. Санкт-Петербург и&nbsp;Ленобласть, Пн–Сб, 10:00–19:00.</p>
+      <div class="fin-tels">
+        <a href="tel:+78126421735"><b>+7 (812) 642-17-35</b><span>руководитель проекта</span></a>
+        <a href="tel:+79643421735"><b>+7 (964) 342-17-35</b><span>менеджер</span></a>
+        <a href="https://wa.me/79643421735" target="_blank" rel="noopener"><b>WhatsApp</b><span>написать</span></a>
+        <a href="https://t.me/compozitspb" target="_blank" rel="noopener"><b>Telegram</b><span>@compozitspb</span></a>
+      </div>
+    </div>
+    <div class="fin-form" data-reveal><h3>Перезвоните мне</h3><p>Оставьте номер — перезвоним в&nbsp;рабочее время и&nbsp;скажем, сколько примерно будет стоить ваш ремонт.</p><div id="ct-form"></div></div>
+  </div>
+</section>
+</main>
+
+<footer class="ftr">
+  <div class="wrap">
+    <span>© <span data-year></span> «Композит» · ремонт квартир в Санкт-Петербурге и Ленинградской области</span>
+    <nav aria-label="Разделы"><a href="v6-ceny.html">Цены</a><a href="v6-raboty.html">Работы</a><a href="v6-chestno.html#kak">Как работаем</a><a href="#" data-privacy>Политика обработки ПДн</a></nav>
+  </div>
+  <div class="wrap" style="margin-top:8px"><span>Цены — за работы, без материалов, и не являются публичной офертой</span></div>
+</footer>
+
+<nav class="mbar" aria-label="Быстрая связь"><a class="mb-p" href="tel:+78126421735">Позвонить</a><a href="https://wa.me/79643421735" target="_blank" rel="noopener">WhatsApp</a><a href="https://t.me/compozitspb" target="_blank" rel="noopener">Telegram</a></nav>
+
+<script src="assets/data.js"></script>
+<script src="assets/kz.js"></script>
+<script>
+(function () {
+  // активный пункт меню
+  var here = location.pathname.split('/').pop() || 'v6-chestno.html';
+  KZ.$$('.nav a').forEach(function (a) { if (a.getAttribute('href') === here) a.setAttribute('aria-current', 'page'); });
+  KZ.$('#ct-form').innerHTML = KZ.leadForm({ button: 'Перезвоните мне' });
+  KZ.initForms(KZ.$('#ct-form'));
+})();
+</script>
